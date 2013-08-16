@@ -1,0 +1,3 @@
+[submodule "locale-api"]
+	path = locale-api
+	url = file:///H:\\UserProfile\\Workspace%20Android\\locale-api\\.git
