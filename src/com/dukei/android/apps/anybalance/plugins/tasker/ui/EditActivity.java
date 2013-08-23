@@ -10,11 +10,11 @@ import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
 import com.dukei.android.apps.anybalance.plugins.tasker.Constants;
+import com.dukei.android.apps.anybalance.plugins.tasker.MetaData;
 import com.dukei.android.apps.anybalance.plugins.tasker.R;
 import com.dukei.android.apps.anybalance.plugins.tasker.bundle.BundleScrubber;
 import com.dukei.android.apps.anybalance.plugins.tasker.bundle.PluginBundleManager;
@@ -22,8 +22,8 @@ import com.dukei.android.apps.anybalance.plugins.tasker.bundle.PluginBundleManag
 public final class EditActivity extends AbstractPluginActivity implements
 		LoaderManager.LoaderCallbacks<Cursor> {
 
-	static final String[] PROJECTION = new String[] { Constants.FIELDNAME_ID,
-		Constants.FIELDNAME_DISPLAY };
+	static final String[] PROJECTION = new String[] { MetaData.Account._ID,
+			MetaData.Account.NAME };
 
 	private SimpleCursorAdapter mAdapter;
 	private ListView list = null;
@@ -42,16 +42,17 @@ public final class EditActivity extends AbstractPluginActivity implements
 			if (PluginBundleManager.isBundleValid(localeBundle)) {
 				accountId = localeBundle
 						.getLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID);
-                Log.i(Constants.LOG_TAG, "Account id = "+ Long.toString(accountId)); //$NON-NLS-1$
-			}	
+				Log.i(Constants.LOG_TAG,
+						"Account id = " + Long.toString(accountId)); //$NON-NLS-1$
+			}
 		}
 
 		setContentView(R.layout.main);
 
-		list = (ListView) findViewById(R.id.lvAccount);
-		list.setEmptyView(getLayoutInflater().inflate(R.layout.empty_progress, (ViewGroup) findViewById(android.R.id.content)));
+		list = (ListView) findViewById(R.id.list);
+		list.setEmptyView(findViewById(R.id.empty));
 
-		String[] fromColumns = {Constants.FIELDNAME_DISPLAY};
+		String[] fromColumns = { MetaData.Account.NAME };
 		int[] toViews = { android.R.id.text1 }; // The TextView in
 												// simple_list_item_1
 
@@ -59,10 +60,9 @@ public final class EditActivity extends AbstractPluginActivity implements
 		// We pass null for the cursor, then update it in onLoadFinished()
 		mAdapter = new SimpleCursorAdapter(this,
 				android.R.layout.simple_list_item_single_choice, null,
-				fromColumns, toViews, 0);	
+				fromColumns, toViews, 0);
 		list.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
 		list.setAdapter(mAdapter);
-
 
 		// Prepare the loader. Either re-connect with an existing one,
 		// or start a new one.
@@ -72,7 +72,6 @@ public final class EditActivity extends AbstractPluginActivity implements
 	@Override
 	public void finish() {
 		if (!isCanceled()) {
-			ListView list = (ListView) findViewById(R.id.lvAccount);
 			int pos = list.getCheckedItemPosition();
 			final long accId = list.getItemIdAtPosition(pos);
 
@@ -84,9 +83,9 @@ public final class EditActivity extends AbstractPluginActivity implements
 				resultIntent.putExtra(
 						com.twofortyfouram.locale.Intent.EXTRA_BUNDLE,
 						resultBundle);
-
-				final String blurb = generateBlurb(getApplicationContext(),
-						Long.toString(accId));
+				Cursor cursor = (Cursor) list.getItemAtPosition(pos);
+				String name = cursor.getString(cursor.getColumnIndex(MetaData.Account.NAME));
+				final String blurb = generateBlurb(getApplicationContext(), name);
 				resultIntent.putExtra(
 						com.twofortyfouram.locale.Intent.EXTRA_STRING_BLURB,
 						blurb);
@@ -106,8 +105,7 @@ public final class EditActivity extends AbstractPluginActivity implements
 	 *            null.
 	 * @return A blurb for the plug-in.
 	 */
-	/* package */static String generateBlurb(final Context context,
-			final String message) {
+	static String generateBlurb(final Context context, final String message) {
 		final int maxBlurbLength = context.getResources().getInteger(
 				R.integer.twofortyfouram_locale_maximum_blurb_length);
 
@@ -120,32 +118,32 @@ public final class EditActivity extends AbstractPluginActivity implements
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		return new CursorLoader(this, Constants.DATA_URI,
-				/*PROJECTION*/ null, null, null, null);
+		return new CursorLoader(this, MetaData.Account.CONTENT_URI, PROJECTION,
+				null, null, null);
 	}
 
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-		mAdapter.swapCursor(data);
+		mAdapter.changeCursor(data);
 		int position = 0;
-		for(int i = 0; i<mAdapter.getCount();i++)
-			if(accountId == mAdapter.getItemId(i)) {
+		for (int i = 0; i < mAdapter.getCount(); i++)
+			if (accountId == mAdapter.getItemId(i)) {
 				position = i;
-                Log.i(Constants.LOG_TAG, "Found position = "+ Integer.toString(position)); //$NON-NLS-1$
+				Log.i(Constants.LOG_TAG,
+						"Found position = " + Integer.toString(position)); //$NON-NLS-1$
 
-			}	
+			}
 		list.setItemChecked(position, true);
-		if(mAdapter.getCount() == 0) {
-			View empty = list.getEmptyView(); 
+		if (mAdapter.getCount() == 0) {
+			View empty = list.getEmptyView();
 			empty.findViewById(R.id.progress).setVisibility(View.GONE);
 			empty.findViewById(R.id.text).setVisibility(View.VISIBLE);
-		} 
+		}
 	}
 
 	@Override
 	public void onLoaderReset(Loader<Cursor> loader) {
 		mAdapter.changeCursor(null);
 	}
-
 
 }

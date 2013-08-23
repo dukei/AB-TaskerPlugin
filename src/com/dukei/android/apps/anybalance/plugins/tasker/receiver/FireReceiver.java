@@ -3,13 +3,14 @@ package com.dukei.android.apps.anybalance.plugins.tasker.receiver;
 import java.util.Locale;
 
 import android.content.BroadcastReceiver;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.dukei.android.apps.anybalance.plugins.tasker.Constants;
+import com.dukei.android.apps.anybalance.plugins.tasker.MetaData;
 import com.dukei.android.apps.anybalance.plugins.tasker.bundle.BundleScrubber;
 import com.dukei.android.apps.anybalance.plugins.tasker.bundle.PluginBundleManager;
 
@@ -22,6 +23,11 @@ public final class FireReceiver extends BroadcastReceiver
         /*
          * Always be strict on input parameters! A malicious third-party app could send a malformed Intent.
          */
+        if (Constants.IS_LOGGABLE)
+        {
+            Log.i(Constants.LOG_TAG,
+                  String.format(Locale.US, "Received action %s", intent.getAction())); //$NON-NLS-1$
+        }
 
         if (!com.twofortyfouram.locale.Intent.ACTION_FIRE_SETTING.equals(intent.getAction()))
         {
@@ -43,7 +49,12 @@ public final class FireReceiver extends BroadcastReceiver
             final Long accountId = bundle.getLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID);
             Intent sendIntent = new Intent();
             sendIntent.setAction(Constants.INTENT);
-            sendIntent.setData(Uri.fromParts(Constants.DATA_URI_SCHEME, Constants.DATA_URI_SSP+"/"+Long.toString(accountId),null));
+            sendIntent.setData(ContentUris.withAppendedId(Constants.INTENT_DATA_URI,accountId));
+            if (Constants.IS_LOGGABLE)
+            {
+                Log.i(Constants.LOG_TAG,
+                      String.format(Locale.US, "Sending intent %s with data %s", sendIntent.getAction(), sendIntent.getData().toString())); //$NON-NLS-1$
+            }
             context.sendBroadcast(sendIntent);
         }
     }

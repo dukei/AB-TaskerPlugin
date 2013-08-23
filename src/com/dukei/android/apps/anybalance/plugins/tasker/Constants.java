@@ -12,7 +12,6 @@
 
 package com.dukei.android.apps.anybalance.plugins.tasker;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.net.Uri;
 
@@ -23,13 +22,9 @@ import android.net.Uri;
 public final class Constants
 {
 
-	public final static String DATA_URI_SSP = "com.dukei.android.apps.anybalance/accounts";
-	public final static String DATA_URI_SCHEME = "accountid";
-	public final static Uri DATA_URI = Uri.fromParts( ContentResolver.SCHEME_CONTENT, DATA_URI_SSP,null);
-	public final static String FIELDNAME_ID = "id";
-	public final static String FIELDNAME_DISPLAY = "name";
 	public final static String INTENT = "com.dukei.android.apps.anybalance.appwidget.action.MY_OWN_WIDGET_UPDATE";
-
+	public final static Uri INTENT_DATA_URI = Uri.parse("accountid://com.dukei.android.apps.anybalance/accounts");
+	
 	/**
      * Log tag for logcat messages.
      */

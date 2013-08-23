@@ -26,6 +26,7 @@
         android:xlargeScreens="true" />
     
     <!-- When hardware acceleration is enabled, the RAM memory usage of the app is significantly increased as soon as any UI is displayed. To reduce the memory usage of a plug-in which is primarily a background app, either (1) hardware acceleration should be disabled or (2) the plug-in's BroadcastReceiver (and any applicable Service) should be put into a different process. This example plug-in creates two processes. -->
+    <uses-permission android:name="com.dukei.android.provider.anybalance.READ_PERMISSION"/>
     <application
         android:name=".PluginApplication"
         android:allowBackup="true"
