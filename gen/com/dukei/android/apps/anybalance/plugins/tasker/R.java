@@ -44,9 +44,11 @@ public final class R {
     }
     public static final class string {
         /**  App name 
+ App name 
          */
         public static final int app_name=0x7f060005;
         /**  Name of the plug-in that appears in Locale 
+ Name of the plug-in that appears in Locale 
          */
         public static final int plugin_name=0x7f060006;
         public static final int text_no_rows=0x7f060007;

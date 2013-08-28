@@ -15,10 +15,10 @@
 <resources>
 
     <!-- App name -->
-    <string name="app_name">Locale/Tasker AnyBalance Plug-in</string>
+    <string name="app_name">Locale/Tasker - плагин для AnyBalance</string>
 
     <!-- Name of the plug-in that appears in Locale -->
     <string name="plugin_name">AnyBalance</string>
-    <string name="text_no_rows">No accounts found.</string>
+    <string name="text_no_rows">Не найдено учетных записей.</string>
 
 </resources>
