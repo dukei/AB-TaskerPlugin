@@ -10,7 +10,7 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-package com.dukei.android.apps.anybalance.plugins.tasker.bundle;
+package com.dukei.android.lib.anybalance.bundle;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -29,6 +29,7 @@ public final class PluginBundleManager
      * Account ID.
      */
     public static final String BUNDLE_EXTRA_ACCOUNT_ID = "com.dukei.android.apps.anybalance.plugins.tasker.LONG_ACCOUNT_ID"; //$NON-NLS-1$
+    public static final String BUNDLE_VAR_VALUES = "com.dukei.android.apps.anybalance.plugins.tasker.BUNDLE_VAR_VALUES"; //$NON-NLS-1$
 
     /**
      * Type: {@code int}.
@@ -42,6 +43,8 @@ public final class PluginBundleManager
      */
     public static final String BUNDLE_EXTRA_INT_VERSION_CODE =
             "com.dukei.android.apps.anybalance.plugins.tasker.INT_VERSION_CODE"; //$NON-NLS-1$
+    public static final String BUNDLE_EXTRA_BOOLEAN_STATE =
+            "com.dukei.android.apps.anybalance.plugins.tasker.BOOLEAN_STATE"; //$NON-NLS-1$
 
     /**
      * Method to verify the content of the bundle are correct.

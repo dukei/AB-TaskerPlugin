@@ -14,16 +14,16 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 
 import com.dukei.android.apps.anybalance.plugins.tasker.Constants;
-import com.dukei.android.apps.anybalance.plugins.tasker.MetaData;
 import com.dukei.android.apps.anybalance.plugins.tasker.R;
-import com.dukei.android.apps.anybalance.plugins.tasker.bundle.BundleScrubber;
-import com.dukei.android.apps.anybalance.plugins.tasker.bundle.PluginBundleManager;
+import com.dukei.android.lib.anybalance.AnyBalanceProvider;
+import com.dukei.android.lib.anybalance.bundle.BundleScrubber;
+import com.dukei.android.lib.anybalance.bundle.PluginBundleManager;
 
 public final class EditActivity extends AbstractPluginActivity implements
 		LoaderManager.LoaderCallbacks<Cursor> {
 
-	static final String[] PROJECTION = new String[] { MetaData.Account._ID,
-			MetaData.Account.NAME };
+	static final String[] PROJECTION = new String[] { AnyBalanceProvider.MetaData.Account._ID,
+			AnyBalanceProvider.MetaData.Account.NAME };
 
 	private SimpleCursorAdapter mAdapter;
 	private ListView list = null;
@@ -52,7 +52,7 @@ public final class EditActivity extends AbstractPluginActivity implements
 		list = (ListView) findViewById(R.id.list);
 		list.setEmptyView(findViewById(R.id.empty));
 
-		String[] fromColumns = { MetaData.Account.NAME };
+		String[] fromColumns = { AnyBalanceProvider.MetaData.Account.NAME };
 		int[] toViews = { android.R.id.text1 }; // The TextView in
 												// simple_list_item_1
 
@@ -84,7 +84,7 @@ public final class EditActivity extends AbstractPluginActivity implements
 						com.twofortyfouram.locale.Intent.EXTRA_BUNDLE,
 						resultBundle);
 				Cursor cursor = (Cursor) list.getItemAtPosition(pos);
-				String name = cursor.getString(cursor.getColumnIndex(MetaData.Account.NAME));
+				String name = cursor.getString(cursor.getColumnIndex(AnyBalanceProvider.MetaData.Account.NAME));
 				final String blurb = generateBlurb(getApplicationContext(), name);
 				resultIntent.putExtra(
 						com.twofortyfouram.locale.Intent.EXTRA_STRING_BLURB,
@@ -118,7 +118,7 @@ public final class EditActivity extends AbstractPluginActivity implements
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		return new CursorLoader(this, MetaData.Account.CONTENT_URI, PROJECTION,
+		return new CursorLoader(this, AnyBalanceProvider.MetaData.Account.CONTENT_URI, PROJECTION,
 				null, null, null);
 	}
 

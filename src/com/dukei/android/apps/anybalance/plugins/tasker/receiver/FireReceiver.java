@@ -10,9 +10,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.dukei.android.apps.anybalance.plugins.tasker.Constants;
-import com.dukei.android.apps.anybalance.plugins.tasker.MetaData;
-import com.dukei.android.apps.anybalance.plugins.tasker.bundle.BundleScrubber;
-import com.dukei.android.apps.anybalance.plugins.tasker.bundle.PluginBundleManager;
+import com.dukei.android.lib.anybalance.AnyBalanceProvider;
+import com.dukei.android.lib.anybalance.bundle.BundleScrubber;
+import com.dukei.android.lib.anybalance.bundle.PluginBundleManager;
 
 public final class FireReceiver extends BroadcastReceiver
 {
@@ -49,7 +49,7 @@ public final class FireReceiver extends BroadcastReceiver
             final Long accountId = bundle.getLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID);
             Intent sendIntent = new Intent();
             sendIntent.setAction(Constants.INTENT);
-            sendIntent.setData(ContentUris.withAppendedId(Constants.INTENT_DATA_URI,accountId));
+            sendIntent.setData(ContentUris.withAppendedId(AnyBalanceProvider.MetaData.Account.CONTENT_URI,accountId));
             if (Constants.IS_LOGGABLE)
             {
                 Log.i(Constants.LOG_TAG,

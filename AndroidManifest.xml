@@ -9,7 +9,7 @@
 
     <!-- Locale 4.x supports API 8 or greater. -->
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="18" />
 
     <!-- This allows the plug-in to appear on non-touchscreen devices like Google TV.  Be sure to test that the app works without a touchscreen. -->
@@ -70,6 +70,7 @@
             <!-- this Intent filter allows the plug-in to be discovered by Locale -->
             <intent-filter>
                 <action android:name="com.twofortyfouram.locale.intent.action.EDIT_SETTING" />
+                <action android:name="android.app.action.ADD_DEVICE_ADMIN"/>
             </intent-filter>
         </activity>
         <!--
@@ -90,6 +91,17 @@
                 <action android:name="com.twofortyfouram.locale.intent.action.FIRE_SETTING" />
             </intent-filter>
         </receiver>
+        <receiver android:name=".receiver.QueryReceiver" 
+                  android:exported="true" 
+                  android:process=":background"
+                  tools:ignore="ExportedReceiver">
+            <intent-filter>
+                <action android:name="com.twofortyfouram.locale.intent.action.QUERY_CONDITION"/>
+            </intent-filter>
+        </receiver>
+        <service android:name=".receiver.BackgroundService" 
+                 android:process=":baclground" 
+                 android:exported="false"></service>
     </application>
 
 </manifest>
