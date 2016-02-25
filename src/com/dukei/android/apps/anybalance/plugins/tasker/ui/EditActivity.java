@@ -11,6 +11,7 @@ import android.support.v4.widget.SimpleCursorAdapter;
 import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.dukei.android.apps.anybalance.plugins.tasker.Constants;
@@ -21,9 +22,25 @@ import com.dukei.android.lib.anybalance.bundle.PluginBundleManager;
 
 public final class EditActivity extends AbstractPluginActivity implements
 		LoaderManager.LoaderCallbacks<Cursor> {
+	
+	private final String ICON_CONTENT_URI="content://com.dukei.android.provider.anybalance.icon/account-icon/";
+	
+	private class SimpleCursorAdapterWithUri extends SimpleCursorAdapter {
 
-	static final String[] PROJECTION = new String[] { AnyBalanceProvider.MetaData.Account._ID,
-			AnyBalanceProvider.MetaData.Account.NAME };
+		public SimpleCursorAdapterWithUri(Context context, int layout, Cursor c, String[] from, int[] to, int flags) {
+			super(context, layout, c, from, to, flags);
+		}
+		
+		@Override 
+		public void setViewImage(ImageView v, String value){
+			super.setViewImage(v,ICON_CONTENT_URI+value);
+		}
+		
+	}
+	
+
+	static final String[] PROJECTION = new String[] { AnyBalanceProvider.MetaData.AccountEx._ID,
+			AnyBalanceProvider.MetaData.AccountEx.NAME };
 
 	private SimpleCursorAdapter mAdapter;
 	private ListView list = null;
@@ -52,15 +69,12 @@ public final class EditActivity extends AbstractPluginActivity implements
 		list = (ListView) findViewById(R.id.list);
 		list.setEmptyView(findViewById(R.id.empty));
 
-		String[] fromColumns = { AnyBalanceProvider.MetaData.Account.NAME };
-		int[] toViews = { android.R.id.text1 }; // The TextView in
-												// simple_list_item_1
+		String[] fromColumns = {/* AnyBalanceProvider.MetaData.Account._ID,*/ AnyBalanceProvider.MetaData.Account.NAME};
+//		int[] toViews = {R.id.img, R.id.name }; 
+		int[] toViews = {android.R.id.text1}; 
 
-		// Create an empty adapter we will use to display the loaded data.
-		// We pass null for the cursor, then update it in onLoadFinished()
-		mAdapter = new SimpleCursorAdapter(this,
-				android.R.layout.simple_list_item_single_choice, null,
-				fromColumns, toViews, 0);
+		mAdapter = new SimpleCursorAdapterWithUri(this,
+				/*R.layout.list_item*/android.R.layout.simple_list_item_single_choice, null, fromColumns, toViews, 0);
 		list.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
 		list.setAdapter(mAdapter);
 
@@ -118,7 +132,7 @@ public final class EditActivity extends AbstractPluginActivity implements
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		return new CursorLoader(this, AnyBalanceProvider.MetaData.Account.CONTENT_URI, PROJECTION,
+		return new CursorLoader(this, AnyBalanceProvider.MetaData.AccountEx.CONTENT_URI, PROJECTION,
 				null, null, null);
 	}
 

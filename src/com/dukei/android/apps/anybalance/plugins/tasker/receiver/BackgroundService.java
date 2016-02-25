@@ -1,5 +1,6 @@
 package com.dukei.android.apps.anybalance.plugins.tasker.receiver;
 
+import java.util.HashMap;
 import java.util.List;
 
 import net.dinglisch.android.tasker.TaskerPlugin;
@@ -59,6 +60,21 @@ public class BackgroundService extends Service {
     private static final class AccountObserver extends ContentObserver {
 
     	private final Context context;
+    	private final HashMap<Uri,Bundle> lastVarMap=new HashMap<Uri,Bundle>(); 
+
+    	private Boolean isValuesChanged(Uri uri, Bundle current){
+    		Bundle last = lastVarMap.put(uri, current);
+    		if(last == null) // no old values - treat as changed 
+    		  return true;
+    		if(last.size() != current.size()) // different bundle sizes - treat as changed
+    		  return true;
+    		if(!last.keySet().containsAll(current.keySet()))
+    		  return true;	
+    		for(String key: last.keySet())
+    			if(!last.getString(key).equals(current.getString(key)))
+    				return true;
+    		return false;
+    	}
     	
     	public AccountObserver(Context context){
     		super(null);
@@ -80,13 +96,9 @@ public class BackgroundService extends Service {
     		if (Constants.IS_LOGGABLE) {
     			Log.v(Constants.LOG_TAG, String.format("Uri changed: %s", uri.toString())); //$NON-NLS-1$
     		}
-    		final Intent requeryIntent =
-    				new Intent(com.twofortyfouram.locale.Intent.ACTION_REQUEST_QUERY).putExtra(com.twofortyfouram.locale.Intent.EXTRA_ACTIVITY,
-    						EditActivity.class.getName());
 
     		AccountEx row = AnyBalanceProvider.getAccountEx(getContext(), ContentUris.parseId(uri));
     		
-    		final Bundle passthroughBundle = new Bundle();
     		// if got valid row - making list of variables for Tasker
     		if(row.getId() > -1) {
     			final Bundle varBundle = new Bundle();
@@ -100,14 +112,23 @@ public class BackgroundService extends Service {
     						varBundle.putString(Constants.TASKER_VAR_PREFIX+Integer.toString(cntIdx), val.getValueNoUnits());
     					cntIdx++;
     				}		
-    			// putting variables into passthrough bundle - will be used in QueryReceiver on REQUEST_QUERY Intent             
-    			passthroughBundle.putLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID, row.getId());
-    			passthroughBundle.putBundle(PluginBundleManager.BUNDLE_VAR_VALUES, varBundle);
+    			
+    			if(isValuesChanged(uri,varBundle)) {
+    	    		if (Constants.IS_LOGGABLE) {
+    	    			Log.v(Constants.LOG_TAG, String.format("Values changed on URI: %s", uri.toString())); //$NON-NLS-1$
+    	    		}
+    	    		final Intent requeryIntent =
+    	    				new Intent(com.twofortyfouram.locale.Intent.ACTION_REQUEST_QUERY).putExtra(com.twofortyfouram.locale.Intent.EXTRA_ACTIVITY,
+    	    						EditActivity.class.getName());
+    	    		final Bundle passthroughBundle = new Bundle();
+	    			passthroughBundle.putLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID, row.getId());
+	    			passthroughBundle.putBundle(PluginBundleManager.BUNDLE_VAR_VALUES, varBundle);
+	        		// add passthrough data for intent
+	        		TaskerPlugin.Event.addPassThroughMessageID(requeryIntent);
+	        		TaskerPlugin.Event.addPassThroughData(requeryIntent, passthroughBundle);
+	        		context.sendBroadcast(requeryIntent);
+    			}
     		}
-    		// add passthrough data for intent
-    		TaskerPlugin.Event.addPassThroughMessageID(requeryIntent);
-    		TaskerPlugin.Event.addPassThroughData(requeryIntent, passthroughBundle);
-    		context.sendBroadcast(requeryIntent);
     	}
     }
 
