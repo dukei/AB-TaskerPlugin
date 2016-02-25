@@ -23,8 +23,14 @@ import android.util.Log;
 
 public class BackgroundService extends Service {
 
-	private final AccountObserver observer = new AccountObserver(getApplicationContext());
-
+	private AccountObserver observer = null;
+	
+	@Override public void onCreate(){
+		super.onCreate();
+		if (observer == null)
+		 observer = new AccountObserver(getApplicationContext());
+	}
+	
 	@Override public int onStartCommand(final Intent intent, final int flags, final int startId) {
 		super.onStartCommand(intent, flags, startId);
 		if(null != intent) {
@@ -32,12 +38,10 @@ public class BackgroundService extends Service {
 			if(extra != null) {
 				long accountId = extra.getLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID);
 				observer.getContext().getContentResolver().registerContentObserver(ContentUris.withAppendedId(
-						AnyBalanceProvider.MetaData.AccountEx.CONTENT_URI,accountId), 
+						AnyBalanceProvider.MetaData.Account.CONTENT_URI,accountId), 
 						false, observer);
 			}
 		}
-
-		ServiceWakeLockManager.releaseLock();
 		return START_STICKY;
 	}
 	

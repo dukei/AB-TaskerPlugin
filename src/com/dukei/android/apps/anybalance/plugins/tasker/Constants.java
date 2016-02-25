@@ -22,7 +22,7 @@ public final class Constants
 {
 
 	public final static String INTENT = "com.dukei.android.apps.anybalance.appwidget.action.MY_OWN_WIDGET_UPDATE";
-	public final static String TASKER_VAR_PREFIX = "ANYBAL_";
+	public final static String TASKER_VAR_PREFIX = "%anybal_";
 	public final static String TASKER_VAR_ACCID = TASKER_VAR_PREFIX+"ACC_ID";
 	public final static String TASKER_VAR_VALUE = TASKER_VAR_PREFIX+"VALUE_";
 	

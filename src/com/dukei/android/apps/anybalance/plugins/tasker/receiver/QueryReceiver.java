@@ -87,7 +87,6 @@ public final class QueryReceiver extends BroadcastReceiver
 							String.format(Locale.US,
 									"AccountId is %d", accountId)); //$NON-NLS-1$
 				}
-	            ServiceWakeLockManager.aquireLock(context);
 	            context.startService(new Intent(context, BackgroundService.class).putExtra(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID,
                         accountId));
 
