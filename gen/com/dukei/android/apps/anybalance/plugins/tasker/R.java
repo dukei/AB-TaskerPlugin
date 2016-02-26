@@ -17,12 +17,13 @@ public final class R {
         public static final int twofortyfouram_locale_ic_menu_save=0x7f020003;
     }
     public static final class id {
-        public static final int empty=0x7f040006;
+        public static final int changesOnly=0x7f040005;
+        public static final int empty=0x7f040007;
         public static final int img=0x7f040003;
-        public static final int list=0x7f040005;
+        public static final int list=0x7f040006;
         public static final int name=0x7f040004;
-        public static final int progress=0x7f040008;
-        public static final int text=0x7f040007;
+        public static final int progress=0x7f040009;
+        public static final int text=0x7f040008;
         /**  Menu item to cancel the current Activity 
          */
         public static final int twofortyfouram_locale_menu_dontsave=0x7f040001;
@@ -51,6 +52,7 @@ public final class R {
  App name 
          */
         public static final int app_name=0x7f060005;
+        public static final int changes_only=0x7f060008;
         /**  Name of the plug-in that appears in Locale 
  Name of the plug-in that appears in Locale 
  Name of the plug-in that appears in Locale 

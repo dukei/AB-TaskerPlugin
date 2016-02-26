@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <CheckBox
+        android:id="@+id/changesOnly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/changes_only"
+        android:visibility="gone" />
+    
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
+    
+   
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
+
     </ListView>
 
     <LinearLayout
@@ -31,5 +47,5 @@
             android:layout_height="wrap_content"
             android:indeterminate="true" />
     </LinearLayout>
-
 </RelativeLayout>
+</LinearLayout>

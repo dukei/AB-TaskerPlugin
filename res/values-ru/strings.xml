@@ -20,5 +20,6 @@
     <!-- Name of the plug-in that appears in Locale -->
     <string name="plugin_name">AnyBalance</string>
     <string name="text_no_rows">Не найдено учетных записей.</string>
-
+    <string name="changes_only">Только изменения</string>
+    
 </resources>

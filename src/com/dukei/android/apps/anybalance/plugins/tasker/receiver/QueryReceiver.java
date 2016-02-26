@@ -71,6 +71,7 @@ public final class QueryReceiver extends BroadcastReceiver
 			final int messageId = TaskerPlugin.Event.retrievePassThroughMessageID(intent);
 			final long accountId = bundle
 					.getLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID);
+			final boolean changesOnly =bundle.getBoolean(PluginBundleManager.BUNDLE_EXTRA_CHANGES_ONLY);
 
 			if (Constants.IS_LOGGABLE)
 			{
@@ -87,8 +88,9 @@ public final class QueryReceiver extends BroadcastReceiver
 							String.format(Locale.US,
 									"AccountId is %d", accountId)); //$NON-NLS-1$
 				}
-	            context.startService(new Intent(context, BackgroundService.class).putExtra(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID,
-                        accountId));
+	            context.startService(new Intent(context, BackgroundService.class)
+	            		                      .putExtra(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID,accountId)
+	            		                      .putExtra(PluginBundleManager.BUNDLE_EXTRA_CHANGES_ONLY,changesOnly));
 
 			} else {
 				// Message id received - retrieving values and put them into Tasker variables            	

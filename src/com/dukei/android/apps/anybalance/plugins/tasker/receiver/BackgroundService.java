@@ -37,10 +37,12 @@ public class BackgroundService extends Service {
 		if(null != intent) {
 			Bundle extra = intent.getExtras();
 			if(extra != null) {
-				long accountId = extra.getLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID);
-				observer.getContext().getContentResolver().registerContentObserver(ContentUris.withAppendedId(
-						AnyBalanceProvider.MetaData.Account.CONTENT_URI,accountId), 
-						false, observer);
+				final long accountId = extra.getLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID);
+				final boolean changesOnly = extra.getBoolean(PluginBundleManager.BUNDLE_EXTRA_CHANGES_ONLY);
+				final Uri uri = ContentUris.withAppendedId(AnyBalanceProvider.MetaData.Account.CONTENT_URI,
+						                                   accountId);
+				observer.setChangesOnly(uri, changesOnly);
+				observer.getContext().getContentResolver().registerContentObserver(uri,false, observer);
 			}
 		}
 		return START_STICKY;
@@ -61,9 +63,10 @@ public class BackgroundService extends Service {
 
     	private final Context context;
     	private final HashMap<Uri,Bundle> lastVarMap=new HashMap<Uri,Bundle>(); 
+    	private final HashMap<Uri,Boolean> changesOnlyMap=new HashMap<Uri,Boolean>(); 
 
     	private Boolean isValuesChanged(Uri uri, Bundle current){
-    		Bundle last = lastVarMap.put(uri, current);
+    		Bundle last = lastVarMap.put(uri, (Bundle)current.clone());
     		if(last == null) // no old values - treat as changed 
     		  return true;
     		if(last.size() != current.size()) // different bundle sizes - treat as changed
@@ -85,6 +88,13 @@ public class BackgroundService extends Service {
     		return context;
     	}
     	
+    	public void setChangesOnly(Uri uri, boolean val) {
+    		changesOnlyMap.put(uri, val);
+    	}
+    	
+    	private boolean getChangesOnly(Uri uri) {
+    		return changesOnlyMap.containsKey(uri) && changesOnlyMap.get(uri);
+    	}
     	
     	@Override 
     	public void onChange(boolean selfChange){
@@ -103,7 +113,7 @@ public class BackgroundService extends Service {
     		if(row.getId() > -1) {
     			final Bundle varBundle = new Bundle();
     			varBundle.putString(Constants.TASKER_VAR_ACCID, Long.toString(row.getId()));
-
+    			
     			int cntIdx = 0;
     			List<Counter> valList = row.getCounters();
     			if(valList != null && !row.isError())  // only if last update was successful 
@@ -113,13 +123,15 @@ public class BackgroundService extends Service {
     					cntIdx++;
     				}		
     			
-    			if(isValuesChanged(uri,varBundle)) {
+    			if(!getChangesOnly(uri) || isValuesChanged(uri,varBundle)) {
     	    		if (Constants.IS_LOGGABLE) {
     	    			Log.v(Constants.LOG_TAG, String.format("Values changed on URI: %s", uri.toString())); //$NON-NLS-1$
     	    		}
     	    		final Intent requeryIntent =
     	    				new Intent(com.twofortyfouram.locale.Intent.ACTION_REQUEST_QUERY).putExtra(com.twofortyfouram.locale.Intent.EXTRA_ACTIVITY,
     	    						EditActivity.class.getName());
+        			varBundle.putString(Constants.TASKER_VAR_LAST_CHECKED, Long.toString(row.m_lastChecked));
+        			varBundle.putString(Constants.TASKER_VAR_LAST_CHECKED_ERROR, Long.toString(row.m_lastCheckedError));
     	    		final Bundle passthroughBundle = new Bundle();
 	    			passthroughBundle.putLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID, row.getId());
 	    			passthroughBundle.putBundle(PluginBundleManager.BUNDLE_VAR_VALUES, varBundle);

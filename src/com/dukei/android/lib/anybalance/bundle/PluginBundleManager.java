@@ -1,15 +1,3 @@
-/*
- * Copyright 2013 two forty four a.m. LLC <http://www.twofortyfouram.com>
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in
- * compliance with the License. You may obtain a copy of the License at
- * <http://www.apache.org/licenses/LICENSE-2.0>
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and limitations under the License.
- */
-
 package com.dukei.android.lib.anybalance.bundle;
 
 import android.content.Context;
@@ -23,13 +11,17 @@ import com.dukei.android.apps.anybalance.plugins.tasker.Constants;
  */
 public final class PluginBundleManager
 {
-    /**
+    
+	public static final String BUNDLE_CLASS_NAME="com.dukei.android.apps.anybalance.plugins.tasker";
+	/**
      * Type: {@code long}.
      * <p>
      * Account ID.
      */
-    public static final String BUNDLE_EXTRA_ACCOUNT_ID = "com.dukei.android.apps.anybalance.plugins.tasker.LONG_ACCOUNT_ID"; //$NON-NLS-1$
-    public static final String BUNDLE_VAR_VALUES = "com.dukei.android.apps.anybalance.plugins.tasker.BUNDLE_VAR_VALUES"; //$NON-NLS-1$
+		
+    public static final String BUNDLE_EXTRA_ACCOUNT_ID = BUNDLE_CLASS_NAME+".LONG_ACCOUNT_ID"; //$NON-NLS-1$
+    public static final String BUNDLE_EXTRA_CHANGES_ONLY = BUNDLE_CLASS_NAME+".BOOLEAN_CHANGES_ONLY"; //$NON-NLS-1$
+    public static final String BUNDLE_VAR_VALUES = BUNDLE_CLASS_NAME+".BUNDLE_VAR_VALUES"; //$NON-NLS-1$
 
     /**
      * Type: {@code int}.
@@ -42,9 +34,9 @@ public final class PluginBundleManager
      * having the version, the plug-in can better detect when such bugs occur.
      */
     public static final String BUNDLE_EXTRA_INT_VERSION_CODE =
-            "com.dukei.android.apps.anybalance.plugins.tasker.INT_VERSION_CODE"; //$NON-NLS-1$
+    		BUNDLE_CLASS_NAME+".INT_VERSION_CODE"; //$NON-NLS-1$
     public static final String BUNDLE_EXTRA_BOOLEAN_STATE =
-            "com.dukei.android.apps.anybalance.plugins.tasker.BOOLEAN_STATE"; //$NON-NLS-1$
+    		BUNDLE_CLASS_NAME+".BOOLEAN_STATE"; //$NON-NLS-1$
 
     /**
      * Method to verify the content of the bundle are correct.
@@ -88,16 +80,6 @@ public final class PluginBundleManager
          * extras above so that the error message is more useful. (E.g. the caller will see what extras are
          * missing, rather than just a message that there is the wrong number).
          */
-        if (2 != bundle.keySet().size())
-        {
-            if (Constants.IS_LOGGABLE)
-            {
-                Log.e(Constants.LOG_TAG,
-                      String.format("bundle must contain 2 keys, but currently contains %d keys: %s", bundle.keySet().size(), bundle.keySet())); //$NON-NLS-1$
-            }
-            return false;
-        }
-
         if (bundle.getLong(BUNDLE_EXTRA_ACCOUNT_ID,-1) == -1)
         {
             if (Constants.IS_LOGGABLE)

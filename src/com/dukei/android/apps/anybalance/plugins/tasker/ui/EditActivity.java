@@ -11,8 +11,11 @@ import android.support.v4.widget.SimpleCursorAdapter;
 import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
+
+import java.util.Locale;
 
 import com.dukei.android.apps.anybalance.plugins.tasker.Constants;
 import com.dukei.android.apps.anybalance.plugins.tasker.R;
@@ -44,7 +47,9 @@ public final class EditActivity extends AbstractPluginActivity implements
 
 	private SimpleCursorAdapter mAdapter;
 	private ListView list = null;
+	private CheckBox changesOnly = null;
 	private long accountId = -1;
+	private boolean changes = false;
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
@@ -59,12 +64,20 @@ public final class EditActivity extends AbstractPluginActivity implements
 			if (PluginBundleManager.isBundleValid(localeBundle)) {
 				accountId = localeBundle
 						.getLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID);
+				changes = localeBundle
+						.getBoolean(PluginBundleManager.BUNDLE_EXTRA_CHANGES_ONLY);
 				Log.i(Constants.LOG_TAG,
 						"Account id = " + Long.toString(accountId)); //$NON-NLS-1$
 			}
 		}
 
 		setContentView(R.layout.main);
+		if(getIntent().getAction().equals(Constants.TASKER_EVENT_INTENT)) {
+			changesOnly = (CheckBox) findViewById(R.id.changesOnly);
+			changesOnly.setVisibility(View.VISIBLE);
+			changesOnly.setChecked(changes);
+		}
+		
 
 		list = (ListView) findViewById(R.id.list);
 		list.setEmptyView(findViewById(R.id.empty));
@@ -94,11 +107,15 @@ public final class EditActivity extends AbstractPluginActivity implements
 
 				final Bundle resultBundle = PluginBundleManager.generateBundle(
 						getApplicationContext(), accId);
+				if(changesOnly != null)
+					resultBundle.putBoolean(PluginBundleManager.BUNDLE_EXTRA_CHANGES_ONLY, changesOnly.isChecked());
 				resultIntent.putExtra(
 						com.twofortyfouram.locale.Intent.EXTRA_BUNDLE,
 						resultBundle);
 				Cursor cursor = (Cursor) list.getItemAtPosition(pos);
 				String name = cursor.getString(cursor.getColumnIndex(AnyBalanceProvider.MetaData.Account.NAME));
+				if( (changesOnly != null) && changesOnly.isChecked()) 
+					name+=" ("+getResources().getString(R.string.changes_only).toLowerCase(Locale.getDefault())+")";
 				final String blurb = generateBlurb(getApplicationContext(), name);
 				resultIntent.putExtra(
 						com.twofortyfouram.locale.Intent.EXTRA_STRING_BLURB,
