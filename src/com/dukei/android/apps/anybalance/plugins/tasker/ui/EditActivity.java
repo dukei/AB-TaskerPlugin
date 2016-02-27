@@ -2,6 +2,7 @@ package com.dukei.android.apps.anybalance.plugins.tasker.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
@@ -14,12 +15,18 @@ import android.widget.AbsListView;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
+import net.dinglisch.android.tasker.TaskerPlugin;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 import com.dukei.android.apps.anybalance.plugins.tasker.Constants;
 import com.dukei.android.apps.anybalance.plugins.tasker.R;
+import com.dukei.android.lib.anybalance.AccountEx;
 import com.dukei.android.lib.anybalance.AnyBalanceProvider;
+import com.dukei.android.lib.anybalance.Counter;
 import com.dukei.android.lib.anybalance.bundle.BundleScrubber;
 import com.dukei.android.lib.anybalance.bundle.PluginBundleManager;
 
@@ -50,6 +57,39 @@ public final class EditActivity extends AbstractPluginActivity implements
 	private CheckBox changesOnly = null;
 	private long accountId = -1;
 	private boolean changes = false;
+	
+	protected static String[] arrayMerge (String[] a, String[] b){
+		List<String> both = new ArrayList<String>(Arrays.asList(a));
+		both.addAll(Arrays.asList(a));
+		return both.toArray(new String [both.size()]);
+	}
+	
+	protected boolean isEventIntent(){
+		return getIntent().getAction().equals(Constants.TASKER_EVENT_INTENT);
+	}
+	
+	protected void addRelevantVairables(Long accId, Intent result){
+		if (isEventIntent() &&  
+				TaskerPlugin.hostSupportsRelevantVariables(getIntent().getExtras())) {
+				final Resources res = getResources();
+	    		AccountEx row = AnyBalanceProvider.getAccountEx(this, accId);
+    			int cntIdx = 0;
+    			List<Counter> valList = row.getCounters();
+    			List<String> nameList = new ArrayList<String>(Arrays.asList(
+    					new String []  {
+    							Constants.TASKER_VAR_ACCID+"\n"+res.getString(R.string.var_acc_id),
+    							Constants.TASKER_VAR_LAST_CHECKED+"\n"+res.getString(R.string.var_last_checked),
+    							Constants.TASKER_VAR_LAST_CHECKED_ERROR+"\n"+res.getString(R.string.var_last_checked_error)
+    					}));
+    			if(valList != null)  // only if last update was successful 
+    				for(Counter val: valList)
+    					nameList.add(Constants.TASKER_VAR_PREFIX+Integer.toString(cntIdx++)+"\n"+
+    				                  (val.isTariff()?res.getString(R.string.var_tariff):val.getName()));
+
+				TaskerPlugin.addRelevantVariableList( result, 
+						   nameList.toArray(new String[nameList.size()]));
+			}      
+	}
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
@@ -72,7 +112,7 @@ public final class EditActivity extends AbstractPluginActivity implements
 		}
 
 		setContentView(R.layout.main);
-		if(getIntent().getAction().equals(Constants.TASKER_EVENT_INTENT)) {
+		if(isEventIntent()) {
 			changesOnly = (CheckBox) findViewById(R.id.changesOnly);
 			changesOnly.setVisibility(View.VISIBLE);
 			changesOnly.setChecked(changes);
@@ -96,6 +136,7 @@ public final class EditActivity extends AbstractPluginActivity implements
 		getSupportLoaderManager().initLoader(0, (Bundle) null, this);
 	}
 
+	
 	@Override
 	public void finish() {
 		if (!isCanceled()) {
@@ -114,13 +155,13 @@ public final class EditActivity extends AbstractPluginActivity implements
 						resultBundle);
 				Cursor cursor = (Cursor) list.getItemAtPosition(pos);
 				String name = cursor.getString(cursor.getColumnIndex(AnyBalanceProvider.MetaData.Account.NAME));
-				if( (changesOnly != null) && changesOnly.isChecked()) 
+				if( isEventIntent() && changesOnly.isChecked()) 
 					name+=" ("+getResources().getString(R.string.changes_only).toLowerCase(Locale.getDefault())+")";
 				final String blurb = generateBlurb(getApplicationContext(), name);
 				resultIntent.putExtra(
 						com.twofortyfouram.locale.Intent.EXTRA_STRING_BLURB,
 						blurb);
-
+				addRelevantVairables(accId, resultIntent);
 				setResult(RESULT_OK, resultIntent);
 			}
 		}

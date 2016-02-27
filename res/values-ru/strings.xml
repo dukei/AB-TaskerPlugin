@@ -22,4 +22,10 @@
     <string name="text_no_rows">Не найдено учетных записей.</string>
     <string name="changes_only">Только изменения</string>
     
+    <string name="var_acc_id">ID аккаунта</string>
+    <string name="var_last_checked">Время (Unix epoch) последнего обновления</string>
+    <string name="var_last_checked_error">Время (Unix epoch) последней ошибки при обновлении</string>
+    <string name="var_tariff">Тариф</string>
+    
+    
 </resources>
