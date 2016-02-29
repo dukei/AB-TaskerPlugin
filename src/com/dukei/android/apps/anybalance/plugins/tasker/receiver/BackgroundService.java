@@ -114,14 +114,11 @@ public class BackgroundService extends Service {
     			final Bundle varBundle = new Bundle();
     			varBundle.putString(Constants.TASKER_VAR_ACCID, Long.toString(row.getId()));
     			
-    			int cntIdx = 0;
     			List<Counter> valList = row.getCounters();
     			if(valList != null && !row.isError())  // only if last update was successful 
-    				for(Counter val: valList) {
+    				for(Counter val: valList)
     					if(!val.isInactive())
-    						varBundle.putString(Constants.TASKER_VAR_PREFIX+Integer.toString(cntIdx), val.getValueNoUnits());
-    					cntIdx++;
-    				}		
+    						varBundle.putString(Constants.TASKER_VAR_PREFIX+val.getKey(), val.getValueNoUnits());
     			
     			if(!getChangesOnly(uri) || isValuesChanged(uri,varBundle)) {
     	    		if (Constants.IS_LOGGABLE) {

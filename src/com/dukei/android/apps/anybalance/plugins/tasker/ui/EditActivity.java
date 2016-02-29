@@ -77,7 +77,6 @@ public final class EditActivity extends AbstractPluginActivity implements
 		if (TaskerPlugin.hostSupportsRelevantVariables(getIntent().getExtras())) {
 				final Resources res = getResources();
 	    		AccountEx row = AnyBalanceProvider.getAccountEx(this, accId);
-    			int cntIdx = 0;
     			List<Counter> valList = row.getCounters();
     			List<String> nameList = new ArrayList<String>(Arrays.asList(
     					new String []  {
@@ -87,7 +86,7 @@ public final class EditActivity extends AbstractPluginActivity implements
     					}));
     			if(valList != null)  // only if last update was successful 
     				for(Counter val: valList)
-    					nameList.add(Constants.TASKER_VAR_PREFIX+Integer.toString(cntIdx++)+"\n"+
+    					nameList.add(Constants.TASKER_VAR_PREFIX+val.getKey()+"\n"+
     				                  (val.isTariff()?res.getString(R.string.var_tariff):val.getName()));
 
 				TaskerPlugin.addRelevantVariableList( result, 
