@@ -81,7 +81,7 @@ public class AnyBalanceProvider {
 		public static final class AccountEx implements BaseColumns {
 			public static final String TABLE_NAME = ACCOUNT_TABLE_NAME;
 			// uri and MIME type definitions
-			public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/accounts-ex");
+			public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/accounts-ex?noms=1");
 			public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.anybalance.accountex";
 			public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.anybalance.accountex";
 			// Additional Columns start here.

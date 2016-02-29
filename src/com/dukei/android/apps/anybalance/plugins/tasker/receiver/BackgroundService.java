@@ -129,6 +129,9 @@ public class BackgroundService extends Service {
     	    						EditActivity.class.getName());
         			varBundle.putString(Constants.TASKER_VAR_LAST_CHECKED, Long.toString(row.m_lastChecked));
         			varBundle.putString(Constants.TASKER_VAR_LAST_CHECKED_ERROR, Long.toString(row.m_lastCheckedError));
+    	    		if (Constants.IS_LOGGABLE) {
+    	    			Log.v(Constants.LOG_TAG, String.format("Times: %d %d", row.m_lastChecked,row.m_lastCheckedError)); //$NON-NLS-1$
+    	    		}
     	    		final Bundle passthroughBundle = new Bundle();
 	    			passthroughBundle.putLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID, row.getId());
 	    			passthroughBundle.putBundle(PluginBundleManager.BUNDLE_VAR_VALUES, varBundle);
