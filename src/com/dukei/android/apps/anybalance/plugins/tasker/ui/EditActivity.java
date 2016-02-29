@@ -24,6 +24,7 @@ import java.util.Locale;
 
 import com.dukei.android.apps.anybalance.plugins.tasker.Constants;
 import com.dukei.android.apps.anybalance.plugins.tasker.R;
+import com.dukei.android.apps.anybalance.plugins.tasker.receiver.FireReceiver;
 import com.dukei.android.lib.anybalance.AccountEx;
 import com.dukei.android.lib.anybalance.AnyBalanceProvider;
 import com.dukei.android.lib.anybalance.Counter;
@@ -68,9 +69,12 @@ public final class EditActivity extends AbstractPluginActivity implements
 		return getIntent().getAction().equals(Constants.TASKER_EVENT_INTENT);
 	}
 	
+	protected boolean isMainIntent(){
+		return getIntent().getAction().equals(Intent.ACTION_MAIN);
+	}
+	
 	protected void addRelevantVairables(Long accId, Intent result){
-		if (isEventIntent() &&  
-				TaskerPlugin.hostSupportsRelevantVariables(getIntent().getExtras())) {
+		if (TaskerPlugin.hostSupportsRelevantVariables(getIntent().getExtras())) {
 				final Resources res = getResources();
 	    		AccountEx row = AnyBalanceProvider.getAccountEx(this, accId);
     			int cntIdx = 0;
@@ -148,21 +152,26 @@ public final class EditActivity extends AbstractPluginActivity implements
 
 				final Bundle resultBundle = PluginBundleManager.generateBundle(
 						getApplicationContext(), accId);
-				if(changesOnly != null)
-					resultBundle.putBoolean(PluginBundleManager.BUNDLE_EXTRA_CHANGES_ONLY, changesOnly.isChecked());
 				resultIntent.putExtra(
 						com.twofortyfouram.locale.Intent.EXTRA_BUNDLE,
 						resultBundle);
 				Cursor cursor = (Cursor) list.getItemAtPosition(pos);
 				String name = cursor.getString(cursor.getColumnIndex(AnyBalanceProvider.MetaData.Account.NAME));
-				if( isEventIntent() && changesOnly.isChecked()) 
-					name+=" ("+getResources().getString(R.string.changes_only).toLowerCase(Locale.getDefault())+")";
+				if( isEventIntent()) {
+					if(changesOnly != null) { 
+						resultBundle.putBoolean(PluginBundleManager.BUNDLE_EXTRA_CHANGES_ONLY, changesOnly.isChecked());
+						if(changesOnly.isChecked()) 
+							name+=" ("+getResources().getString(R.string.changes_only).toLowerCase(Locale.getDefault())+")";
+					}
+					addRelevantVairables(accId, resultIntent);
+				}	
 				final String blurb = generateBlurb(getApplicationContext(), name);
 				resultIntent.putExtra(
 						com.twofortyfouram.locale.Intent.EXTRA_STRING_BLURB,
 						blurb);
-				addRelevantVairables(accId, resultIntent);
 				setResult(RESULT_OK, resultIntent);
+				if(isMainIntent())
+					FireReceiver.sendSettingsEvent(this, accId);
 			}
 		}
 

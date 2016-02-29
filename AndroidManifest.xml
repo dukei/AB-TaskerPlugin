@@ -10,7 +10,7 @@
     <!-- Locale 4.x supports API 8 or greater. -->
     <uses-sdk
         android:minSdkVersion="11"
-        android:targetSdkVersion="18" />
+        android:targetSdkVersion="23" />
 
     <!-- This allows the plug-in to appear on non-touchscreen devices like Google TV.  Be sure to test that the app works without a touchscreen. -->
     <uses-feature

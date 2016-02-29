@@ -10,13 +10,24 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.dukei.android.apps.anybalance.plugins.tasker.Constants;
-import com.dukei.android.lib.anybalance.AnyBalanceProvider;
 import com.dukei.android.lib.anybalance.bundle.BundleScrubber;
 import com.dukei.android.lib.anybalance.bundle.PluginBundleManager;
 
 public final class FireReceiver extends BroadcastReceiver
 {
 
+	public static void sendSettingsEvent(final Context context, final long accountId){
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Constants.INTENT);
+        sendIntent.setData(ContentUris.withAppendedId(Constants.INTENT_DATA_URI,accountId));
+        if (Constants.IS_LOGGABLE)
+        {
+            Log.i(Constants.LOG_TAG,
+                  String.format(Locale.US, "Sending intent %s with data %s", sendIntent.getAction(), sendIntent.getData().toString())); //$NON-NLS-1$
+        }
+        context.sendBroadcast(sendIntent);
+	}
+	
     @Override
     public void onReceive(final Context context, final Intent intent)
     {
@@ -45,17 +56,6 @@ public final class FireReceiver extends BroadcastReceiver
         BundleScrubber.scrub(bundle);
 
         if (PluginBundleManager.isBundleValid(bundle))
-        {
-            final Long accountId = bundle.getLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID);
-            Intent sendIntent = new Intent();
-            sendIntent.setAction(Constants.INTENT);
-            sendIntent.setData(ContentUris.withAppendedId(Constants.INTENT_DATA_URI,accountId));
-            if (Constants.IS_LOGGABLE)
-            {
-                Log.i(Constants.LOG_TAG,
-                      String.format(Locale.US, "Sending intent %s with data %s", sendIntent.getAction(), sendIntent.getData().toString())); //$NON-NLS-1$
-            }
-            context.sendBroadcast(sendIntent);
-        }
+        	sendSettingsEvent(context, bundle.getLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID));
     }
 }
