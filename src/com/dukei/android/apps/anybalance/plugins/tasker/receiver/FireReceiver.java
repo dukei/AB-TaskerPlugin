@@ -49,7 +49,7 @@ public final class FireReceiver extends BroadcastReceiver
             final Long accountId = bundle.getLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID);
             Intent sendIntent = new Intent();
             sendIntent.setAction(Constants.INTENT);
-            sendIntent.setData(ContentUris.withAppendedId(AnyBalanceProvider.MetaData.Account.CONTENT_URI,accountId));
+            sendIntent.setData(ContentUris.withAppendedId(Constants.INTENT_DATA_URI,accountId));
             if (Constants.IS_LOGGABLE)
             {
                 Log.i(Constants.LOG_TAG,

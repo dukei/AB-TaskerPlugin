@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.dukei.android.apps.anybalance.plugins.tasker"
     android:installLocation="internalOnly"
-    android:versionCode="4005"
-    android:versionName="4.0.5" >
+    android:versionCode="4006"
+    android:versionName="4.0.6" >
 
     <!-- Locale 4.x supports API 8 or greater. -->
     <uses-sdk
