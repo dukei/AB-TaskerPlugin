@@ -82,7 +82,8 @@ public final class EditActivity extends AbstractPluginActivity implements
     					new String []  {
     							Constants.TASKER_VAR_ACCID+"\n"+res.getString(R.string.var_acc_id),
     							Constants.TASKER_VAR_LAST_CHECKED+"\n"+res.getString(R.string.var_last_checked),
-    							Constants.TASKER_VAR_LAST_CHECKED_ERROR+"\n"+res.getString(R.string.var_last_checked_error)
+    							Constants.TASKER_VAR_LAST_CHECKED_ERROR+"\n"+res.getString(R.string.var_last_checked_error),
+    							Constants.TASKER_VAR_LAST_ERROR+"\n"+res.getString(R.string.var_last_error)
     					}));
     			if(valList != null)  // only if last update was successful 
     				for(Counter val: valList)
@@ -125,12 +126,13 @@ public final class EditActivity extends AbstractPluginActivity implements
 		list = (ListView) findViewById(R.id.list);
 		list.setEmptyView(findViewById(R.id.empty));
 
-		String[] fromColumns = {/* AnyBalanceProvider.MetaData.Account._ID,*/ AnyBalanceProvider.MetaData.Account.NAME};
-//		int[] toViews = {R.id.img, R.id.name }; 
-		int[] toViews = {android.R.id.text1}; 
+		String[] fromColumns = {AnyBalanceProvider.MetaData.Account._ID, 
+				                AnyBalanceProvider.MetaData.Account.NAME};
+		int[] toViews = {R.id.img, R.id.name }; 
+//		int[] toViews = {android.R.id.text1}; 
 
 		mAdapter = new SimpleCursorAdapterWithUri(this,
-				/*R.layout.list_item*/android.R.layout.simple_list_item_single_choice, null, fromColumns, toViews, 0);
+				R.layout.list_item /*android.R.layout.simple_list_item_single_choice*/, null, fromColumns, toViews, 0);
 		list.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
 		list.setAdapter(mAdapter);
 

@@ -25,6 +25,7 @@
     <string name="var_acc_id">Konto ID</string>
     <string name="var_last_checked">Unixzeit von der letzten Änderung</string>
     <string name="var_last_checked_error">Unixzeit von der letzten Fehler</string>
+    <string name="var_last_error">Fehlermeldung</string>
     <string name="var_tariff">Tarif</string>
     
 </resources>

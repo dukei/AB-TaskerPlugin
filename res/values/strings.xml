@@ -25,6 +25,7 @@
     <string name="var_acc_id">Account ID</string>
     <string name="var_last_checked">Time  (Unix epoch) of last update</string>
     <string name="var_last_checked_error">Time (Unix epoch) of last error in update</string>
+    <string name="var_last_error">Error message</string>
     <string name="var_tariff">Tariff</string>
     
     

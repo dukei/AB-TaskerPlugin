@@ -3,6 +3,8 @@ package com.dukei.android.apps.anybalance.plugins.tasker.receiver;
 import java.util.HashMap;
 import java.util.List;
 
+import org.json.JSONException;
+
 import net.dinglisch.android.tasker.TaskerPlugin;
 
 import com.dukei.android.apps.anybalance.plugins.tasker.Constants;
@@ -129,6 +131,13 @@ public class BackgroundService extends Service {
     	    						EditActivity.class.getName());
         			varBundle.putString(Constants.TASKER_VAR_LAST_CHECKED, Long.toString(row.m_lastChecked));
         			varBundle.putString(Constants.TASKER_VAR_LAST_CHECKED_ERROR, Long.toString(row.m_lastCheckedError));
+        			if(row.m_lastCheckedError>row.m_lastChecked)
+	        			try {
+							varBundle.putString(Constants.TASKER_VAR_LAST_ERROR, row.getLastError().getString("message"));
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
     	    		if (Constants.IS_LOGGABLE) {
     	    			Log.v(Constants.LOG_TAG, String.format("Times: %d %d", row.m_lastChecked,row.m_lastCheckedError)); //$NON-NLS-1$
     	    		}

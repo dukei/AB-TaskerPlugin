@@ -29,6 +29,7 @@ public final class Constants
 	public final static String TASKER_VAR_ACCID = TASKER_VAR_PREFIX+"acc_id";
 	public final static String TASKER_VAR_LAST_CHECKED = TASKER_VAR_PREFIX+"last_checked";
 	public final static String TASKER_VAR_LAST_CHECKED_ERROR = TASKER_VAR_PREFIX+"last_checked_error";
+	public final static String TASKER_VAR_LAST_ERROR = TASKER_VAR_PREFIX+"last_error";
 	
 	
 	/**

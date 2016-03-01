@@ -77,7 +77,8 @@ public final class R {
         public static final int var_acc_id=0x7f060009;
         public static final int var_last_checked=0x7f06000a;
         public static final int var_last_checked_error=0x7f06000b;
-        public static final int var_tariff=0x7f06000c;
+        public static final int var_last_error=0x7f06000c;
+        public static final int var_tariff=0x7f06000d;
     }
     public static final class style {
         /**  Stupid Motorola.  This is a hack to avoid hideous ListViews on Motoblur devices.  http://community.developer.motorola.com/t5/MOTODEV-Blog/Why-Does-My-ListView-Look-Different/ba-p/17462 
