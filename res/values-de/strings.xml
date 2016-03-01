@@ -21,7 +21,8 @@
     <string name="plugin_name">AnyBalance</string>
     <string name="text_no_rows">Keine Konten haben gefunden.</string>
     <string name="changes_only">Nur Änderungen</string>
-
+    <string name="sync_exec">Warten auf die Aktualisierung</string>
+    
     <string name="var_acc_id">Konto ID</string>
     <string name="var_last_checked">Unixzeit von der letzten Änderung</string>
     <string name="var_last_checked_error">Unixzeit von der letzten Fehler</string>

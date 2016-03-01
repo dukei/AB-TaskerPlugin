@@ -1,10 +1,10 @@
 package com.dukei.android.apps.anybalance.plugins.tasker.ui;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,7 +13,7 @@ import com.dukei.android.apps.anybalance.plugins.tasker.Constants;
 import com.dukei.android.apps.anybalance.plugins.tasker.R;
 import com.twofortyfouram.locale.BreadCrumber;
 
-public abstract class AbstractPluginActivity extends FragmentActivity
+public abstract class AbstractPluginActivity extends Activity
 {
     /**
      * Flag boolean that can only be set to true via the "Don't Save"

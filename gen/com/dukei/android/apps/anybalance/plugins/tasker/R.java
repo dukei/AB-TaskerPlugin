@@ -18,12 +18,13 @@ public final class R {
     }
     public static final class id {
         public static final int changesOnly=0x7f040005;
-        public static final int empty=0x7f040007;
+        public static final int empty=0x7f040008;
         public static final int img=0x7f040003;
-        public static final int list=0x7f040006;
+        public static final int list=0x7f040007;
         public static final int name=0x7f040004;
-        public static final int progress=0x7f040009;
-        public static final int text=0x7f040008;
+        public static final int progress=0x7f04000a;
+        public static final int syncExec=0x7f040006;
+        public static final int text=0x7f040009;
         /**  Menu item to cancel the current Activity 
          */
         public static final int twofortyfouram_locale_menu_dontsave=0x7f040001;
@@ -58,6 +59,7 @@ public final class R {
  Name of the plug-in that appears in Locale 
          */
         public static final int plugin_name=0x7f060006;
+        public static final int sync_exec=0x7f060009;
         public static final int text_no_rows=0x7f060007;
         /**  A format string for breadcrumbs in the titlebar.  For left to right languages, such as English, the format will look something like "Main Activity > Sub Activity > Sub Activity 2".  Item #1 is the previous path, item #2 is the separator, and item #3 is the current item.  For most left to right languages, this shouldn't need to be changed. 
          */
@@ -74,11 +76,11 @@ public final class R {
         /**  The Save button in the menu or Action Bar.  MDPI 21 character maximum 
          */
         public static final int twofortyfouram_locale_menu_save=0x7f060004;
-        public static final int var_acc_id=0x7f060009;
-        public static final int var_last_checked=0x7f06000a;
-        public static final int var_last_checked_error=0x7f06000b;
-        public static final int var_last_error=0x7f06000c;
-        public static final int var_tariff=0x7f06000d;
+        public static final int var_acc_id=0x7f06000a;
+        public static final int var_last_checked=0x7f06000b;
+        public static final int var_last_checked_error=0x7f06000c;
+        public static final int var_last_error=0x7f06000d;
+        public static final int var_tariff=0x7f06000e;
     }
     public static final class style {
         /**  Stupid Motorola.  This is a hack to avoid hideous ListViews on Motoblur devices.  http://community.developer.motorola.com/t5/MOTODEV-Blog/Why-Does-My-ListView-Look-Different/ba-p/17462 

@@ -21,7 +21,8 @@
     <string name="plugin_name">AnyBalance</string>
     <string name="text_no_rows">No accounts found.</string>
     <string name="changes_only">Changes only</string>
-
+    <string name="sync_exec">Wait for update ended</string>
+    
     <string name="var_acc_id">Account ID</string>
     <string name="var_last_checked">Time  (Unix epoch) of last update</string>
     <string name="var_last_checked_error">Time (Unix epoch) of last error in update</string>

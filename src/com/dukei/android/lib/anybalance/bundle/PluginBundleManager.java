@@ -21,6 +21,8 @@ public final class PluginBundleManager
 		
     public static final String BUNDLE_EXTRA_ACCOUNT_ID = BUNDLE_CLASS_NAME+".LONG_ACCOUNT_ID"; //$NON-NLS-1$
     public static final String BUNDLE_EXTRA_CHANGES_ONLY = BUNDLE_CLASS_NAME+".BOOLEAN_CHANGES_ONLY"; //$NON-NLS-1$
+    public static final String BUNDLE_EXTRA_SYNC_EXEC = BUNDLE_CLASS_NAME+".BOOLEAN_SYNC_EXEC"; //$NON-NLS-1$
+    public static final String BUNDLE_EXTRA_ORIG_INTENT = BUNDLE_CLASS_NAME+".INTENT_ORIGINAL_INTENT"; //$NON-NLS-1$
     public static final String BUNDLE_VAR_VALUES = BUNDLE_CLASS_NAME+".BUNDLE_VAR_VALUES"; //$NON-NLS-1$
 
     /**

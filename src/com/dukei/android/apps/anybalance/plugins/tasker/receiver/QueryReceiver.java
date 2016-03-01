@@ -88,7 +88,7 @@ public final class QueryReceiver extends BroadcastReceiver
 							String.format(Locale.US,
 									"AccountId is %d", accountId)); //$NON-NLS-1$
 				}
-	            context.startService(new Intent(context, BackgroundService.class)
+	            context.startService(new Intent(context, EventBackgroundService.class)
 	            		                      .putExtra(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID,accountId)
 	            		                      .putExtra(PluginBundleManager.BUNDLE_EXTRA_CHANGES_ONLY,changesOnly));
 

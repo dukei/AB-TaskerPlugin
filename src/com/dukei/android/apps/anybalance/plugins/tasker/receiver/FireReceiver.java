@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import net.dinglisch.android.tasker.TaskerPlugin;
 
 import com.dukei.android.apps.anybalance.plugins.tasker.Constants;
 import com.dukei.android.lib.anybalance.bundle.BundleScrubber;
@@ -16,7 +17,8 @@ import com.dukei.android.lib.anybalance.bundle.PluginBundleManager;
 public final class FireReceiver extends BroadcastReceiver
 {
 
-	public static void sendSettingsEvent(final Context context, final long accountId){
+	public static void sendSettingsEvent(final Context context, 
+			                             final long accountId){
         Intent sendIntent = new Intent();
         sendIntent.setAction(Constants.INTENT);
         sendIntent.setData(ContentUris.withAppendedId(Constants.INTENT_DATA_URI,accountId));
@@ -55,7 +57,26 @@ public final class FireReceiver extends BroadcastReceiver
         final Bundle bundle = intent.getBundleExtra(com.twofortyfouram.locale.Intent.EXTRA_BUNDLE);
         BundleScrubber.scrub(bundle);
 
-        if (PluginBundleManager.isBundleValid(bundle))
-        	sendSettingsEvent(context, bundle.getLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID));
+        if (PluginBundleManager.isBundleValid(bundle)) {
+        	if(isOrderedBroadcast() &&
+        	   bundle.getBoolean(PluginBundleManager.BUNDLE_EXTRA_SYNC_EXEC)) {
+                if (Constants.IS_LOGGABLE)
+                {
+                    Log.i(Constants.LOG_TAG,
+                          String.format(Locale.US, "Got ordered broadcast for settings %s", intent.getAction())); //$NON-NLS-1$
+                }
+    			final long accountId = bundle
+    					.getLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID);
+	            context.startService(new Intent(context, SyncSettingsBackgroundService.class)
+	                      .putExtra(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID,accountId)
+	                      .putExtra(PluginBundleManager.BUNDLE_EXTRA_ORIG_INTENT,intent));
+  	        	sendSettingsEvent(context, 
+  					  bundle.getLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID));
+  	        	setResultCode( TaskerPlugin.Setting.RESULT_CODE_PENDING);
+        	}	
+        	else
+  	        	sendSettingsEvent(context, 
+  					  bundle.getLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID));
+        }
     }
 }

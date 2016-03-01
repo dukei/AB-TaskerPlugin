@@ -1,20 +1,20 @@
 package com.dukei.android.apps.anybalance.plugins.tasker.ui;
 
+import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.Loader;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import net.dinglisch.android.tasker.TaskerPlugin;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ import com.dukei.android.lib.anybalance.bundle.BundleScrubber;
 import com.dukei.android.lib.anybalance.bundle.PluginBundleManager;
 
 public final class EditActivity extends AbstractPluginActivity implements
-		LoaderManager.LoaderCallbacks<Cursor> {
+		LoaderCallbacks<Cursor> {
 	
 	private final String ICON_CONTENT_URI="content://com.dukei.android.provider.anybalance.icon/account-icon/";
 	
@@ -56,8 +56,8 @@ public final class EditActivity extends AbstractPluginActivity implements
 	private SimpleCursorAdapter mAdapter;
 	private ListView list = null;
 	private CheckBox changesOnly = null;
+	private CheckBox sync = null;
 	private long accountId = -1;
-	private boolean changes = false;
 	
 	protected static String[] arrayMerge (String[] a, String[] b){
 		List<String> both = new ArrayList<String>(Arrays.asList(a));
@@ -65,11 +65,15 @@ public final class EditActivity extends AbstractPluginActivity implements
 		return both.toArray(new String [both.size()]);
 	}
 	
-	protected boolean isEventIntent(){
+	protected boolean isEvent(){
 		return getIntent().getAction().equals(Constants.TASKER_EVENT_INTENT);
 	}
 	
-	protected boolean isMainIntent(){
+	protected boolean isSettings(){
+		return getIntent().getAction().equals(Constants.TASKER_SETTINGS_INTENT);
+	}
+	
+	protected boolean isMain(){
 		return getIntent().getAction().equals(Intent.ACTION_MAIN);
 	}
 	
@@ -99,6 +103,21 @@ public final class EditActivity extends AbstractPluginActivity implements
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		setContentView(R.layout.main);
+
+		changesOnly = (CheckBox) findViewById(R.id.changesOnly);
+		
+		if(isEvent())
+			changesOnly.setVisibility(View.VISIBLE);
+
+		sync = (CheckBox) findViewById(R.id.syncExec);
+		if(isSettings() && 
+				TaskerPlugin.Setting.hostSupportsSynchronousExecution( getIntent().getExtras()))
+			sync.setVisibility(View.VISIBLE);
+		
+		list = (ListView) findViewById(R.id.list);
+		list.setEmptyView(findViewById(R.id.empty));
+		
 		BundleScrubber.scrub(getIntent());
 
 		final Bundle localeBundle = getIntent().getBundleExtra(
@@ -108,37 +127,29 @@ public final class EditActivity extends AbstractPluginActivity implements
 			if (PluginBundleManager.isBundleValid(localeBundle)) {
 				accountId = localeBundle
 						.getLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID);
-				changes = localeBundle
-						.getBoolean(PluginBundleManager.BUNDLE_EXTRA_CHANGES_ONLY);
 				Log.i(Constants.LOG_TAG,
 						"Account id = " + Long.toString(accountId)); //$NON-NLS-1$
+				if(isEvent()) 
+					changesOnly.setChecked(localeBundle
+							.getBoolean(PluginBundleManager.BUNDLE_EXTRA_CHANGES_ONLY));
+				if(isSettings())
+					sync.setChecked(localeBundle
+							.getBoolean(PluginBundleManager.BUNDLE_EXTRA_SYNC_EXEC));
 			}
 		}
-
-		setContentView(R.layout.main);
-		if(isEventIntent()) {
-			changesOnly = (CheckBox) findViewById(R.id.changesOnly);
-			changesOnly.setVisibility(View.VISIBLE);
-			changesOnly.setChecked(changes);
-		}
-		
-
-		list = (ListView) findViewById(R.id.list);
-		list.setEmptyView(findViewById(R.id.empty));
 
 		String[] fromColumns = {AnyBalanceProvider.MetaData.Account._ID, 
 				                AnyBalanceProvider.MetaData.Account.NAME};
 		int[] toViews = {R.id.img, R.id.name }; 
-//		int[] toViews = {android.R.id.text1}; 
 
 		mAdapter = new SimpleCursorAdapterWithUri(this,
-				R.layout.list_item /*android.R.layout.simple_list_item_single_choice*/, null, fromColumns, toViews, 0);
+				R.layout.list_item, null, fromColumns, toViews, 0);
 		list.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
 		list.setAdapter(mAdapter);
 
 		// Prepare the loader. Either re-connect with an existing one,
 		// or start a new one.
-		getSupportLoaderManager().initLoader(0, (Bundle) null, this);
+		getLoaderManager().initLoader(0, (Bundle) null, this);
 	}
 
 	
@@ -158,7 +169,7 @@ public final class EditActivity extends AbstractPluginActivity implements
 						resultBundle);
 				Cursor cursor = (Cursor) list.getItemAtPosition(pos);
 				String name = cursor.getString(cursor.getColumnIndex(AnyBalanceProvider.MetaData.Account.NAME));
-				if( isEventIntent()) {
+				if( isEvent()) {
 					if(changesOnly != null) { 
 						resultBundle.putBoolean(PluginBundleManager.BUNDLE_EXTRA_CHANGES_ONLY, changesOnly.isChecked());
 						if(changesOnly.isChecked()) 
@@ -166,12 +177,22 @@ public final class EditActivity extends AbstractPluginActivity implements
 					}
 					addRelevantVairables(accId, resultIntent);
 				}	
+				if(isSettings()) {
+					if(sync != null && (sync.getVisibility() == View.VISIBLE)) {
+						resultBundle.putBoolean(PluginBundleManager.BUNDLE_EXTRA_SYNC_EXEC, sync.isChecked());
+						if(sync.isChecked()) {
+							name+=" ("+getResources().getString(R.string.sync_exec).toLowerCase(Locale.getDefault())+")";
+							addRelevantVairables(accId, resultIntent);
+							TaskerPlugin.Setting.requestTimeoutMS( resultIntent, Constants.SYNC_TIMEOUT );
+						}	
+					}
+				}
 				final String blurb = generateBlurb(getApplicationContext(), name);
 				resultIntent.putExtra(
 						com.twofortyfouram.locale.Intent.EXTRA_STRING_BLURB,
 						blurb);
 				setResult(RESULT_OK, resultIntent);
-				if(isMainIntent())
+				if(isMain())
 					FireReceiver.sendSettingsEvent(this, accId);
 			}
 		}
