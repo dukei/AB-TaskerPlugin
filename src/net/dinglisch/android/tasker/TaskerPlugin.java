@@ -26,6 +26,10 @@ package net.dinglisch.android.tasker;
 // added RESULT_CODE_FAILED_PLUGIN_FIRST
 // added Setting.VARNAME_ERROR_MESSAGE
 
+// v1.6 20150213
+// added Setting.getHintTimeoutMS()
+// added Host.addHintTimeoutMS()
+
 import java.net.URISyntaxException;
 import java.security.SecureRandom;
 import java.util.regex.Pattern;
@@ -121,6 +125,18 @@ public class TaskerPlugin {
 			EXTRA_HOST_CAPABILITY_REQUEST_QUERY_DATA_PASS_THROUGH
 	;
 
+	/**
+     * 	
+     *  Miscellaneous operational hints going one way or the other
+     *  @see Setting#hostSupportsVariableReturn(Bundle)
+     */
+	
+	private final static String		EXTRA_HINTS_BUNDLE = EXTRAS_PREFIX + "HINTS";
+
+	private final static String		BUNDLE_KEY_HINT_PREFIX = ".hints.";
+	
+	private final static String		BUNDLE_KEY_HINT_TIMEOUT_MS = BUNDLE_KEY_HINT_PREFIX + "TIMEOUT";
+	
 	/**
 	 * 
      *	@see #hostSupportsRelevantVariables(Bundle)
@@ -431,6 +447,7 @@ public class TaskerPlugin {
         	String completionIntentString = (String) getExtraValueSafe( originalFireIntent, Setting.EXTRA_PLUGIN_COMPLETION_INTENT, String.class, "signalFinish" );
 
         	if ( completionIntentString != null ) {
+        		
         		Uri completionIntentUri = null;
         		try {
         			completionIntentUri = Uri.parse( completionIntentString );
@@ -461,6 +478,33 @@ public class TaskerPlugin {
                 
         	return okFlag;
         }
+
+        /**
+		 * Check for a hint on the timeout value the host is using.
+		 * Used by: plugin FireReceiver.
+		 * Requires Tasker 4.7+
+		 *
+		 * @param  extrasFromHost intent extras from the intent received by the FireReceiver	
+		 * @return timeoutMS the hosts timeout setting for the action or -1 if no hint is available.
+		 * 
+		 * @see #REQUESTED_TIMEOUT_MS_NONE, REQUESTED_TIMEOUT_MS_MAX, REQUESTED_TIMEOUT_MS_NEVER
+		 */
+        public static int getHintTimeoutMS( Bundle extrasFromHost ) {
+
+        	int timeoutMS = -1;
+        	
+			Bundle hintsBundle = (Bundle) TaskerPlugin.getBundleValueSafe( extrasFromHost, EXTRA_HINTS_BUNDLE, Bundle.class, "getHintTimeoutMS" );
+
+			if ( hintsBundle != null ) {
+				        	
+				Integer val = (Integer) getBundleValueSafe( hintsBundle, BUNDLE_KEY_HINT_TIMEOUT_MS, Integer.class, "getHintTimeoutMS" );
+				
+				if ( val != null )
+					timeoutMS = val;
+			}
+			
+			return timeoutMS;
+		}
 	}
 		
 	// ----------------------------- CONDITION/EVENT PLUGIN ONLY --------------------------------- //
@@ -526,7 +570,7 @@ public class TaskerPlugin {
 		*/
 		public static void addPassThroughData( Intent requestQueryIntent, Bundle data ) {
 			
-			Bundle passThroughBundle = retrieveOrCreatePassThroughBundle(requestQueryIntent);
+			Bundle passThroughBundle = retrieveOrCreatePassThroughBundle( requestQueryIntent );
 			
 			passThroughBundle.putAll( data );
 		}
@@ -539,7 +583,7 @@ public class TaskerPlugin {
 		 * key TaskerPlugin.Event.PASS_THOUGH_BUNDLE_MESSAGE_ID_KEY.
 		 * 
 		 * @param queryConditionIntent QUERY_REQUEST sent from host
-		 * @return data previouly added to the REQUEST_QUERY intent
+		 * @return data previously added to the REQUEST_QUERY intent
 		 * @see #hostSupportsRequestQueryDataPassThrough(Bundle)
 		 * @see #addPassThroughData(Intent,Bundle)
 		*/
@@ -569,7 +613,7 @@ public class TaskerPlugin {
 		*/
 		public static int addPassThroughMessageID( Intent requestQueryIntent ) {
 			
-			Bundle passThroughBundle = retrieveOrCreatePassThroughBundle(requestQueryIntent);
+			Bundle passThroughBundle = retrieveOrCreatePassThroughBundle( requestQueryIntent );
 					
 			int id = getPositiveNonRepeatingRandomInteger();
 			
@@ -632,42 +676,42 @@ public class TaskerPlugin {
 		 * intents to any EditActivity, FireReceiver or QueryReceiver.
 		 *
 		 * @param  toPlugin the intent we're sending
-		 * @return capabilites one or more of the EXTRA_HOST_CAPABILITY_XXX flags 
+		 * @return capabilities one or more of the EXTRA_HOST_CAPABILITY_XXX flags 
 		*/
 		public static Intent addCapabilities( Intent toPlugin, int capabilities ) {
 			return toPlugin.putExtra( EXTRA_HOST_CAPABILITIES, capabilities  );
 		}
 
-		 /**
-         * Add an intent to the fire intent before it goes to the plugin FireReceiver, which the plugin
-         * can use to signal when it is finished. Only use if @code{pluginWantsSychronousExecution} is true.
-         *
-         * @param fireIntent fire intent going to the plugin 
-         * @param completionIntent intent which will signal the host that the plugin is finished.
-         * Implementation is host-dependent.
-        */
-        public static void addCompletionIntent( Intent fireIntent, Intent completionIntent ) {
-                fireIntent.putExtra( 
-                        Setting.EXTRA_PLUGIN_COMPLETION_INTENT, 
-                        completionIntent.toUri( Intent.URI_INTENT_SCHEME )
-                );
-        }
+		/**
+		* Add an intent to the fire intent before it goes to the plugin FireReceiver, which the plugin
+		* can use to signal when it is finished. Only use if @code{pluginWantsSychronousExecution} is true.
+		*	
+		* @param fireIntent fire intent going to the plugin 
+		* @param completionIntent intent which will signal the host that the plugin is finished.
+		* Implementation is host-dependent.
+        	*/
+        	public static void addCompletionIntent( Intent fireIntent, Intent completionIntent ) {
+			fireIntent.putExtra( 
+				Setting.EXTRA_PLUGIN_COMPLETION_INTENT, 
+                        	completionIntent.toUri( Intent.URI_INTENT_SCHEME )
+                	);
+        	}
 
-        /**
-         * When a setting plugin is finished, it sends the host the intent which was passed to it
-         * via @code{addCompletionIntent}. 
-         *
-         * @param completionIntent intent returned from the plugin when it finished.
-         * @return resultCode measure of plugin success, defaults to UNKNOWN 
-        */
-        public static int getSettingResultCode( Intent completionIntent ) {
+        	/**
+	         * When a setting plugin is finished, it sends the host the intent which was passed to it
+       		  * via @code{addCompletionIntent}. 
+       		  *
+       		  * @param completionIntent intent returned from the plugin when it finished.
+       		  * @return resultCode measure of plugin success, defaults to UNKNOWN 
+       		 */
+       		 public static int getSettingResultCode( Intent completionIntent ) {
         
-        	Integer val = (Integer) getExtraValueSafe( completionIntent, Setting.EXTRA_RESULT_CODE, Integer.class, "getSettingResultCode" );
+       		 	Integer val = (Integer) getExtraValueSafe( completionIntent, Setting.EXTRA_RESULT_CODE, Integer.class, "getSettingResultCode" );
 
-        	return ( val == null ) ? Setting.RESULT_CODE_UNKNOWN : val;
-        }
+       		 	return ( val == null ) ? Setting.RESULT_CODE_UNKNOWN : val;
+       		 }
 
-        /**
+       		 /**
 		 * Extract a bundle of variables from an intent received from the FireReceiver. This
 		 * should be called if the host previously indicated to the plugin
 		 * that it supports setting variable return.
@@ -683,6 +727,30 @@ public class TaskerPlugin {
 			);
 		}
 
+		/** 
+		* Inform a setting plugin of the timeout value the host is using.
+		* 
+		* @param toPlugin the intent we're sending
+		* @param timeoutMS the hosts timeout setting for the action. Note that this may differ from
+		* that which the plugin requests.
+		* @see #REQUESTED_TIMEOUT_MS_NONE, REQUESTED_TIMEOUT_MS_MAX, REQUESTED_TIMEOUT_MS_NEVER
+		*/
+		public static void addHintTimeoutMS( Intent toPlugin, int timeoutMS ) {
+			getHintsBundle( toPlugin, "addHintTimeoutMS" ).putInt( BUNDLE_KEY_HINT_TIMEOUT_MS, timeoutMS );
+		}
+
+		private static Bundle getHintsBundle( Intent intent, String funcName ) {
+
+			Bundle hintsBundle = (Bundle) getExtraValueSafe( intent, EXTRA_HINTS_BUNDLE, Bundle.class, funcName );
+			
+			if ( hintsBundle == null ) {
+				hintsBundle = new Bundle();
+				intent.putExtra( EXTRA_HINTS_BUNDLE, hintsBundle );
+			}
+			
+			return hintsBundle;
+		}
+		
 		public static boolean haveRequestedTimeout( Bundle extrasFromPluginEditActivity ) {
 			return extrasFromPluginEditActivity.containsKey( Setting.EXTRA_REQUESTED_TIMEOUT );
 		}
@@ -713,6 +781,10 @@ public class TaskerPlugin {
 		
 		public static void cleanRelevantVariables( Bundle b ) {
 			b.remove( BUNDLE_KEY_RELEVANT_VARIABLES );
+		}
+
+		public static void cleanHints( Bundle extras ) {
+			extras.remove( TaskerPlugin.EXTRA_HINTS_BUNDLE );
 		}
 
 		public static void cleanRequestedTimeout( Bundle extras ) {

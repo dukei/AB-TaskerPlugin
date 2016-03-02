@@ -1,6 +1,8 @@
 package com.dukei.android.apps.anybalance.plugins.tasker.receiver;
 
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.content.BroadcastReceiver;
 import android.content.ContentUris;
@@ -70,7 +72,7 @@ public final class FireReceiver extends BroadcastReceiver
 	            context.startService(new Intent(context, SyncSettingsBackgroundService.class)
 	                      .putExtra(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID,accountId)
 	                      .putExtra(PluginBundleManager.BUNDLE_EXTRA_ORIG_INTENT,intent));
-  	        	sendSettingsEvent(context, 
+	            sendSettingsEvent(context, 
   					  bundle.getLong(PluginBundleManager.BUNDLE_EXTRA_ACCOUNT_ID));
   	        	setResultCode( TaskerPlugin.Setting.RESULT_CODE_PENDING);
         	}	
