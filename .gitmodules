@@ -1,0 +1,3 @@
+[submodule "locale-api"]
+	path = locale-api
+	url = https://github.com/ddewaele/locale-api.git
