@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\build\intermediates\exploded-aar\AB-TaskerPlugin\localeapi\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2eaa8d07ecdbcac0586cd76abcdc1bc3503eceb9">
+        <dex dex="C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\build\intermediates\pre-dexed\debug\AB-TaskerPlugin-localeapi-unspecified_748c842aaa55fb41728a1731a68d08f2f6796746.jar" />
+    </item>
+
+</items>

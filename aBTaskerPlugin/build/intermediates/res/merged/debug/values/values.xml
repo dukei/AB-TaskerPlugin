@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <item name="twofortyfouram_locale_menu_dontsave" type="id"/>
+    <item name="twofortyfouram_locale_menu_help" type="id"/>
+    <item name="twofortyfouram_locale_menu_save" type="id"/>
+    <string name="app_name">Locale/Tasker AnyBalance Plug-in</string>
+    <string name="changes_only">Changes only</string>
+    <string name="plugin_name">AnyBalance</string>
+    <string name="sync_exec">Wait for update ended</string>
+    <string name="text_no_rows">No accounts found.</string>
+    <string name="twofortyfouram_locale_breadcrumb_format" ns1:ignore="UnusedResources">%1$s%2$s%3$s</string>
+    <string name="twofortyfouram_locale_breadcrumb_separator" ns1:ignore="UnusedResources">\u0020>\u0020</string>
+    <string name="twofortyfouram_locale_menu_dontsave">Cancel</string>
+    <string name="twofortyfouram_locale_menu_help">Help</string>
+    <string name="twofortyfouram_locale_menu_save">Done</string>
+    <string name="var_acc_id">Account ID</string>
+    <string name="var_last_checked">Time  (Unix epoch) of last update</string>
+    <string name="var_last_checked_error">Time (Unix epoch) of last error in update</string>
+    <string name="var_last_error">Error message</string>
+    <string name="var_tariff">Tariff</string>
+    <style name="Theme.Locale.Dark" parent="android:Theme"/>
+    <style name="Theme.Locale.Dialog" parent="@android:style/Theme.Translucent.NoTitleBar"/>
+    <style name="Theme.Locale.Light" parent="android:Theme.Light"/>
+</resources>

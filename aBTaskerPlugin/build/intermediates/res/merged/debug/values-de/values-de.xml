@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Locale/Tasker Plug-in für AnyBalance</string>
+    <string name="changes_only">Nur Änderungen</string>
+    <string name="plugin_name">AnyBalance</string>
+    <string name="sync_exec">Warten auf die Aktualisierung</string>
+    <string name="text_no_rows">Keine Konten haben gefunden.</string>
+    <string name="twofortyfouram_locale_breadcrumb_format">%1$s%2$s%3$s</string>
+    <string name="twofortyfouram_locale_breadcrumb_separator">\u0020>\u0020</string>
+    <string name="twofortyfouram_locale_menu_dontsave">Abbrechen</string>
+    <string name="twofortyfouram_locale_menu_help">Hilfe</string>
+    <string name="twofortyfouram_locale_menu_save">Fertig</string>
+    <string name="var_acc_id">Konto ID</string>
+    <string name="var_last_checked">Unixzeit von der letzten Änderung</string>
+    <string name="var_last_checked_error">Unixzeit von der letzten Fehler</string>
+    <string name="var_last_error">Fehlermeldung</string>
+    <string name="var_tariff">Tarif</string>
+</resources>

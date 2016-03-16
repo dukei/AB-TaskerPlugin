@@ -1,0 +1,50 @@
+[
+    {
+        "outputFile": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\localeapi\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-mdpi-v4\\values-mdpi-v4.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 100,
+                    "endColumn": 104,
+                    "endOffset": 200
+                },
+                "from": {
+                    "file": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\localeapi\\build\\intermediates\\bundles\\debug\\res\\values-mdpi-v4\\values-mdpi-v4.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 100,
+                        "endColumn": 104,
+                        "endOffset": 200
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\localeapi\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-mdpi-v4\\values-mdpi-v4.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 100,
+                    "endColumn": 104,
+                    "endOffset": 200
+                },
+                "from": {
+                    "file": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\localeapi\\build\\intermediates\\bundles\\debug\\res\\values-mdpi-v4\\values-mdpi-v4.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 100,
+                        "endColumn": 104,
+                        "endOffset": 200
+                    }
+                }
+            }
+        ]
+    }
+]

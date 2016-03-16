@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\res\\merged\\debug\\drawable\\twofortyfouram_locale_ic_menu_help.xml",
+        "source": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\exploded-aar\\AB-TaskerPlugin\\localeapi\\unspecified\\res\\drawable\\twofortyfouram_locale_ic_menu_help.xml"
+    },
+    {
+        "merged": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\res\\merged\\debug\\drawable\\twofortyfouram_locale_ic_menu_save.xml",
+        "source": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\exploded-aar\\AB-TaskerPlugin\\localeapi\\unspecified\\res\\drawable\\twofortyfouram_locale_ic_menu_save.xml"
+    },
+    {
+        "merged": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\res\\merged\\debug\\drawable\\twofortyfouram_locale_ic_menu_save.xml",
+        "source": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\exploded-aar\\AB-TaskerPlugin\\localeapi\\unspecified\\res\\drawable\\twofortyfouram_locale_ic_menu_save.xml"
+    },
+    {
+        "merged": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\res\\merged\\debug\\drawable\\icon.png",
+        "source": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\drawable\\icon.png"
+    },
+    {
+        "merged": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\res\\merged\\debug\\drawable\\twofortyfouram_locale_ic_menu_help.xml",
+        "source": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\exploded-aar\\AB-TaskerPlugin\\localeapi\\unspecified\\res\\drawable\\twofortyfouram_locale_ic_menu_help.xml"
+    },
+    {
+        "merged": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\res\\merged\\debug\\drawable\\twofortyfouram_locale_ic_menu_dontsave.xml",
+        "source": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\exploded-aar\\AB-TaskerPlugin\\localeapi\\unspecified\\res\\drawable\\twofortyfouram_locale_ic_menu_dontsave.xml"
+    },
+    {
+        "merged": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\res\\merged\\debug\\drawable\\twofortyfouram_locale_ic_menu_dontsave.xml",
+        "source": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\exploded-aar\\AB-TaskerPlugin\\localeapi\\unspecified\\res\\drawable\\twofortyfouram_locale_ic_menu_dontsave.xml"
+    },
+    {
+        "merged": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\res\\merged\\debug\\drawable\\icon.png",
+        "source": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\drawable\\icon.png"
+    }
+]

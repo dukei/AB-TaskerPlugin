@@ -1,0 +1,30 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'softworks.keystore'
+            keyPassword 'dwegkp67s'
+            storeFile file('C:/Users/vostrikovva/AndroidStudioProjects/AB-TaskerPlugin/softworks.keystore')
+            storePassword 'dwegkp67s'
+        }
+    }
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+    defaultConfig {
+        applicationId "com.dukei.android.apps.anybalance.plugins.tasker"
+        minSdkVersion 11
+        targetSdkVersion 23
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+            signingConfig signingConfigs.config
+        }
+    }
+}
+
+dependencies {
+    compile project(':localeapi')
+}
