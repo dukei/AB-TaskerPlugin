@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<view 
+<view xmlns:android="http://schemas.android.com/apk/res/android"
     class="com.dukei.android.apps.anybalance.plugins.tasker.ui.AccListItem"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" 
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/img"
@@ -12,7 +11,7 @@
         android:layout_height="match_parent"
         android:layout_margin="4dp"
         android:maxHeight="32dp" />
-    
+
     <CheckedTextView
         android:id="@+id/name"
         android:layout_width="match_parent"

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:3:1-109:12
+ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:3:1-113:12
 	package
 		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:5:5-63
 		INJECTED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml
@@ -50,11 +50,11 @@ ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPl
 	android:anyDensity
 		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:21:9-34
 uses-permission#com.dukei.android.provider.anybalance.READ_PERMISSION
-ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:28:5-92
+ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:28:5-93
 	android:name
 		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:28:22-90
 application
-ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:29:5-107:23
+ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:29:5-111:19
 	android:label
 		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:34:9-41
 	android:hardwareAccelerated
@@ -132,34 +132,34 @@ ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPl
 	android:name
 		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:90:25-92
 receiver#com.dukei.android.apps.anybalance.plugins.tasker.receiver.QueryReceiver
-ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:93:9-100:20
+ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:93:9-101:20
 	android:process
-		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:95:19-48
+		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:96:13-42
 	android:exported
-		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:94:19-42
+		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:95:13-36
 	tools:ignore
-		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:96:19-50
+		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:97:13-44
 	android:name
-		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:93:19-57
+		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:94:13-51
 intent-filter#com.twofortyfouram.locale.intent.action.QUERY_CONDITION
-ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:97:13-99:29
+ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:98:13-100:29
 action#com.twofortyfouram.locale.intent.action.QUERY_CONDITION
-ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:98:17-97
+ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:99:17-98
 	android:name
-		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:98:25-95
+		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:99:25-95
 service#com.dukei.android.apps.anybalance.plugins.tasker.receiver.EventBackgroundService
-ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:101:9-103:53
+ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:103:9-106:53
 	android:process
-		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:102:18-47
+		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:106:13-42
 	android:exported
-		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:103:18-42
+		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:105:13-37
 	android:name
-		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:101:18-65
+		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:104:13-60
 service#com.dukei.android.apps.anybalance.plugins.tasker.receiver.SyncSettingsBackgroundService
-ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:104:9-106:53
+ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:107:9-110:53
 	android:process
-		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:105:18-47
+		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:110:13-42
 	android:exported
-		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:106:18-42
+		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:109:13-37
 	android:name
-		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:104:18-72
+		ADDED from C:\Users\vostrikovva\AndroidStudioProjects\AB-TaskerPlugin\aBTaskerPlugin\src\main\AndroidManifest.xml:108:13-67

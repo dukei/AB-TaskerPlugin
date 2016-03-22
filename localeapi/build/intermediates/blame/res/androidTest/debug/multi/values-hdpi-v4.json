@@ -7,8 +7,9 @@
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 100,
-                    "endColumn": 104,
-                    "endOffset": 200
+                    "endLine": 3,
+                    "endColumn": 14,
+                    "endOffset": 205
                 },
                 "from": {
                     "file": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\localeapi\\build\\intermediates\\bundles\\debug\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
@@ -16,8 +17,9 @@
                         "startLine": 2,
                         "startColumn": 4,
                         "startOffset": 100,
-                        "endColumn": 104,
-                        "endOffset": 200
+                        "endLine": 3,
+                        "endColumn": 14,
+                        "endOffset": 205
                     }
                 }
             }

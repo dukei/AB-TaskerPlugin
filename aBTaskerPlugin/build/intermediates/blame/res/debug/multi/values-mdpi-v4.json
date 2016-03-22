@@ -31,8 +31,9 @@
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 100,
-                    "endColumn": 104,
-                    "endOffset": 200
+                    "endLine": 3,
+                    "endColumn": 14,
+                    "endOffset": 205
                 },
                 "from": {
                     "file": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\exploded-aar\\AB-TaskerPlugin\\localeapi\\unspecified\\res\\values-mdpi-v4\\values-mdpi-v4.xml",
@@ -40,8 +41,9 @@
                         "startLine": 2,
                         "startColumn": 4,
                         "startOffset": 100,
-                        "endColumn": 104,
-                        "endOffset": 200
+                        "endLine": 3,
+                        "endColumn": 14,
+                        "endOffset": 205
                     }
                 }
             }
