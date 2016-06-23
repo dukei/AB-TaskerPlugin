@@ -1,18 +1,10 @@
 [
     {
-        "merged": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\res\\merged\\debug\\layout\\main.xml",
-        "source": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\layout\\main.xml"
-    },
-    {
         "merged": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\res\\merged\\debug\\layout\\main.xml",
         "source": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\layout\\main.xml"
     },
     {
         "merged": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\res\\merged\\debug\\layout\\list_item.xml",
         "source": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\layout\\list_item.xml"
-    },
-    {
-        "merged": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\res\\merged\\debug\\layout\\list_item.xml",
-        "source": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\layout\\list_item.xml"
     }
 ]

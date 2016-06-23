@@ -1,29 +1,5 @@
 [
     {
-        "outputFile": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\res\\merged\\debug\\values-mdpi-v4\\values-mdpi-v4.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 100,
-                    "endColumn": 104,
-                    "endOffset": 200
-                },
-                "from": {
-                    "file": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\exploded-aar\\AB-TaskerPlugin\\localeapi\\unspecified\\res\\values-mdpi-v4\\values-mdpi-v4.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 100,
-                        "endColumn": 104,
-                        "endOffset": 200
-                    }
-                }
-            }
-        ]
-    },
-    {
         "outputFile": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\res\\merged\\debug\\values-mdpi-v4\\values-mdpi-v4.xml",
         "map": [
             {

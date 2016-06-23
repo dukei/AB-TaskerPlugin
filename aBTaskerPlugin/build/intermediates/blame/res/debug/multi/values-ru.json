@@ -13,11 +13,11 @@
                 "from": {
                     "file": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
                     "position": {
-                        "startLine": 17,
+                        "startLine": 16,
                         "startColumn": 4,
-                        "startOffset": 711,
+                        "startOffset": 710,
                         "endColumn": 74,
-                        "endOffset": 781
+                        "endOffset": 780
                     }
                 }
             },
@@ -32,11 +32,11 @@
                 "from": {
                     "file": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
                     "position": {
-                        "startLine": 22,
+                        "startLine": 21,
                         "startColumn": 4,
-                        "startOffset": 963,
+                        "startOffset": 962,
                         "endColumn": 57,
-                        "endOffset": 1016
+                        "endOffset": 1015
                     }
                 }
             },
@@ -51,11 +51,11 @@
                 "from": {
                     "file": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
                     "position": {
-                        "startLine": 20,
+                        "startLine": 19,
                         "startColumn": 4,
-                        "startOffset": 843,
+                        "startOffset": 842,
                         "endColumn": 50,
-                        "endOffset": 889
+                        "endOffset": 888
                     }
                 }
             },
@@ -70,11 +70,11 @@
                 "from": {
                     "file": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
                     "position": {
-                        "startLine": 23,
+                        "startLine": 22,
                         "startColumn": 4,
-                        "startOffset": 1021,
+                        "startOffset": 1020,
                         "endColumn": 66,
-                        "endOffset": 1083
+                        "endOffset": 1082
                     }
                 }
             },
@@ -89,11 +89,11 @@
                 "from": {
                     "file": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
                     "position": {
-                        "startLine": 21,
+                        "startLine": 20,
                         "startColumn": 4,
-                        "startOffset": 894,
+                        "startOffset": 893,
                         "endColumn": 68,
-                        "endOffset": 958
+                        "endOffset": 957
                     }
                 }
             },
@@ -203,11 +203,11 @@
                 "from": {
                     "file": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
                     "position": {
-                        "startLine": 25,
+                        "startLine": 24,
                         "startColumn": 4,
-                        "startOffset": 1093,
+                        "startOffset": 1088,
                         "endColumn": 50,
-                        "endOffset": 1139
+                        "endOffset": 1134
                     }
                 }
             },
@@ -222,301 +222,11 @@
                 "from": {
                     "file": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
                     "position": {
-                        "startLine": 26,
-                        "startColumn": 4,
-                        "startOffset": 1144,
-                        "endColumn": 85,
-                        "endOffset": 1225
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 14,
-                    "startColumn": 4,
-                    "startOffset": 883,
-                    "endColumn": 101,
-                    "endOffset": 980
-                },
-                "from": {
-                    "file": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
-                    "position": {
-                        "startLine": 27,
-                        "startColumn": 4,
-                        "startOffset": 1230,
-                        "endColumn": 101,
-                        "endOffset": 1327
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 15,
-                    "startColumn": 4,
-                    "startOffset": 985,
-                    "endColumn": 62,
-                    "endOffset": 1043
-                },
-                "from": {
-                    "file": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
-                    "position": {
-                        "startLine": 28,
-                        "startColumn": 4,
-                        "startOffset": 1332,
-                        "endColumn": 62,
-                        "endOffset": 1390
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 16,
-                    "startColumn": 4,
-                    "startOffset": 1048,
-                    "endColumn": 44,
-                    "endOffset": 1088
-                },
-                "from": {
-                    "file": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
-                    "position": {
-                        "startLine": 29,
-                        "startColumn": 4,
-                        "startOffset": 1395,
-                        "endColumn": 44,
-                        "endOffset": 1435
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\res\\merged\\debug\\values-ru\\values-ru.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 74,
-                    "endOffset": 125
-                },
-                "from": {
-                    "file": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
-                    "position": {
-                        "startLine": 17,
-                        "startColumn": 4,
-                        "startOffset": 711,
-                        "endColumn": 74,
-                        "endOffset": 781
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 130,
-                    "endColumn": 57,
-                    "endOffset": 183
-                },
-                "from": {
-                    "file": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
-                    "position": {
-                        "startLine": 22,
-                        "startColumn": 4,
-                        "startOffset": 963,
-                        "endColumn": 57,
-                        "endOffset": 1016
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 4,
-                    "startColumn": 4,
-                    "startOffset": 188,
-                    "endColumn": 50,
-                    "endOffset": 234
-                },
-                "from": {
-                    "file": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
-                    "position": {
-                        "startLine": 20,
-                        "startColumn": 4,
-                        "startOffset": 843,
-                        "endColumn": 50,
-                        "endOffset": 889
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 5,
-                    "startColumn": 4,
-                    "startOffset": 239,
-                    "endColumn": 66,
-                    "endOffset": 301
-                },
-                "from": {
-                    "file": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
-                    "position": {
-                        "startLine": 23,
-                        "startColumn": 4,
-                        "startOffset": 1021,
-                        "endColumn": 66,
-                        "endOffset": 1083
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 6,
-                    "startColumn": 4,
-                    "startOffset": 306,
-                    "endColumn": 68,
-                    "endOffset": 370
-                },
-                "from": {
-                    "file": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
-                    "position": {
-                        "startLine": 21,
-                        "startColumn": 4,
-                        "startOffset": 894,
-                        "endColumn": 68,
-                        "endOffset": 958
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 7,
-                    "startColumn": 4,
-                    "startOffset": 375,
-                    "endColumn": 80,
-                    "endOffset": 451
-                },
-                "from": {
-                    "file": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\exploded-aar\\AB-TaskerPlugin\\localeapi\\unspecified\\res\\values-ru\\values-ru.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 80,
-                        "endOffset": 131
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 8,
-                    "startColumn": 4,
-                    "startOffset": 456,
-                    "endColumn": 84,
-                    "endOffset": 536
-                },
-                "from": {
-                    "file": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\exploded-aar\\AB-TaskerPlugin\\localeapi\\unspecified\\res\\values-ru\\values-ru.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 136,
-                        "endColumn": 84,
-                        "endOffset": 216
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 9,
-                    "startColumn": 4,
-                    "startOffset": 541,
-                    "endColumn": 70,
-                    "endOffset": 607
-                },
-                "from": {
-                    "file": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\exploded-aar\\AB-TaskerPlugin\\localeapi\\unspecified\\res\\values-ru\\values-ru.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 221,
-                        "endColumn": 70,
-                        "endOffset": 287
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 10,
-                    "startColumn": 4,
-                    "startOffset": 612,
-                    "endColumn": 66,
-                    "endOffset": 674
-                },
-                "from": {
-                    "file": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\exploded-aar\\AB-TaskerPlugin\\localeapi\\unspecified\\res\\values-ru\\values-ru.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 292,
-                        "endColumn": 66,
-                        "endOffset": 354
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 11,
-                    "startColumn": 4,
-                    "startOffset": 679,
-                    "endColumn": 66,
-                    "endOffset": 741
-                },
-                "from": {
-                    "file": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\build\\intermediates\\exploded-aar\\AB-TaskerPlugin\\localeapi\\unspecified\\res\\values-ru\\values-ru.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 359,
-                        "endColumn": 66,
-                        "endOffset": 421
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 12,
-                    "startColumn": 4,
-                    "startOffset": 746,
-                    "endColumn": 50,
-                    "endOffset": 792
-                },
-                "from": {
-                    "file": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
-                    "position": {
                         "startLine": 25,
                         "startColumn": 4,
-                        "startOffset": 1093,
-                        "endColumn": 50,
-                        "endOffset": 1139
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 13,
-                    "startColumn": 4,
-                    "startOffset": 797,
-                    "endColumn": 85,
-                    "endOffset": 878
-                },
-                "from": {
-                    "file": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
-                    "position": {
-                        "startLine": 26,
-                        "startColumn": 4,
-                        "startOffset": 1144,
+                        "startOffset": 1139,
                         "endColumn": 85,
-                        "endOffset": 1225
+                        "endOffset": 1220
                     }
                 }
             },
@@ -529,13 +239,13 @@
                     "endOffset": 980
                 },
                 "from": {
-                    "file": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
+                    "file": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
                     "position": {
-                        "startLine": 27,
+                        "startLine": 26,
                         "startColumn": 4,
-                        "startOffset": 1230,
+                        "startOffset": 1225,
                         "endColumn": 101,
-                        "endOffset": 1327
+                        "endOffset": 1322
                     }
                 }
             },
@@ -548,13 +258,13 @@
                     "endOffset": 1043
                 },
                 "from": {
-                    "file": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
+                    "file": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
                     "position": {
-                        "startLine": 28,
+                        "startLine": 27,
                         "startColumn": 4,
-                        "startOffset": 1332,
+                        "startOffset": 1327,
                         "endColumn": 62,
-                        "endOffset": 1390
+                        "endOffset": 1385
                     }
                 }
             },
@@ -567,13 +277,13 @@
                     "endOffset": 1088
                 },
                 "from": {
-                    "file": "H:\\UserProfile\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
+                    "file": "C:\\Users\\vostrikovva\\AndroidStudioProjects\\AB-TaskerPlugin\\aBTaskerPlugin\\src\\main\\res\\values-ru\\strings.xml",
                     "position": {
-                        "startLine": 29,
+                        "startLine": 28,
                         "startColumn": 4,
-                        "startOffset": 1395,
+                        "startOffset": 1390,
                         "endColumn": 44,
-                        "endOffset": 1435
+                        "endOffset": 1430
                     }
                 }
             }
